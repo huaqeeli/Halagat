@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlleres.SaveAndReviewController">
+   <children>
+      <HBox layoutX="10.0" layoutY="10.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="61.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <TableView prefHeight="800.0" prefWidth="400.0" styleClass="tableStyle" stylesheets="@../../Css/pagStyle.css">
+               <columns>
+                  <TableColumn fx:id="name_col1" prefWidth="75.0" text="رقم الطالب" />
+                  <TableColumn fx:id="name_col" minWidth="150.0" prefWidth="75.0" text="اسم الطالب" />
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <VBox prefHeight="262.0" prefWidth="780.0">
+                     <children>
+                        <HBox alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" prefHeight="123.0" prefWidth="780.0" style="-fx-background-color: #C5E4D5;">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="رقم الطالب :" />
+                              <Label contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="261.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="رقم الطالب" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="61.0" prefHeight="40.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="اسم الطالب :" />
+                              <Label contentDisplay="CENTER" layoutX="135.0" layoutY="61.0" prefHeight="40.0" prefWidth="261.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="اسم الطالب :" />
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="140.0" prefHeight="60.0" prefWidth="550.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="اليوم : " />
+                              <ComboBox fx:id="halagahName1" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="250.0" promptText="اختر...." HBox.hgrow="ALWAYS" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="السورة: " />
+                              <TextField fx:id="issuePlace" alignment="CENTER" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="250.0" HBox.hgrow="ALWAYS" />
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="180.0" prefHeight="60.0" prefWidth="550.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="من الاية رقم :" />
+                              <TextField fx:id="mobileNumber" alignment="CENTER" layoutX="38.0" layoutY="10.0" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="250.0" HBox.hgrow="ALWAYS" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="الى الاية رقم :" />
+                              <TextField fx:id="level" alignment="CENTER" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="250.0" HBox.hgrow="ALWAYS" />
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="220.0" prefHeight="60.0" prefWidth="550.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="التقدير" />
+                              <ComboBox fx:id="halagahName" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="250.0" promptText="اختر...." HBox.hgrow="ALWAYS" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="نوع السجل :" />
+                              <ComboBox fx:id="halagahName11" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="250.0" promptText="اختر...." HBox.hgrow="ALWAYS" />
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <Separator prefHeight="8.0" prefWidth="500.0" style="-fx-background-color: #3C3B3B;">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </Separator>
+                        <HBox prefHeight="47.0" prefWidth="500.0">
+                           <children>
+                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#saveData" prefHeight="40.0" prefWidth="125.0" styleClass="pageButtonStyle" stylesheets="@../../Css/pagStyle.css" text="حفظ" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets right="2.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#editData" prefHeight="40.0" prefWidth="125.0" styleClass="pageButtonStyle" stylesheets="@../../Css/pagStyle.css" text="تعديل" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets right="2.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button layoutX="135.0" layoutY="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteData" prefHeight="40.0" prefWidth="125.0" styleClass="pageButtonStyle" stylesheets="@../../Css/pagStyle.css" text="حذف" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                        <Separator layoutX="10.0" layoutY="268.0" prefHeight="8.0" prefWidth="500.0" style="-fx-background-color: #3C3B3B;">
+                           <VBox.margin>
+                              <Insets bottom="10.0" top="10.0" />
+                           </VBox.margin>
+                        </Separator>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <TableView prefHeight="200.0" prefWidth="200.0" styleClass="tableStyle" stylesheets="@../../Css/pagStyle.css" VBox.vgrow="ALWAYS">
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                     <columns>
+                        <TableColumn fx:id="name_col11" prefWidth="75.0" text="اليوم" />
+                        <TableColumn fx:id="name_col1" prefWidth="261.0" text="التاريخ" />
+                        <TableColumn fx:id="age_col1" prefWidth="75.0" text="السورة" />
+                        <TableColumn fx:id="birthDate_col1" prefWidth="75.0" text="من الاية" />
+                        <TableColumn fx:id="nationality_col1" prefWidth="75.0" text="الى الاية" />
+                        <TableColumn fx:id="nationalID_col1" prefWidth="75.0" text="التقدير" />
+                        <TableColumn fx:id="nationalID_col11" prefWidth="75.0" text="نوع السجل" />
+                     </columns>
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </TableView>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

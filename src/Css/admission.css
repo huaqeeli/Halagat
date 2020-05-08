@@ -1,0 +1,41 @@
+@import "font.css";
+
+.buttonStyle {
+    -fx-font-family:'URW DIN Arabic';
+    -fx-font-size: 15px;
+    -fx-background-color: #3C3B3B;
+    -fx-background-radius: 0;
+    -fx-text-fill: #FFFFFF;
+}
+.buttonStyle:hover{
+    -fx-background-color: #32BFF0;
+}
+.labelStyle{
+    -fx-font-family:'URW DIN Arabic';
+    -fx-font-size: 15px;
+    -fx-text-fill: #3C3B3B;
+}
+.idLable{
+    -fx-font-family:'URW DIN Arabic';
+    -fx-font-size: 15px;
+    -fx-background-color: #3C3B3B;
+    -fx-background-radius: 0;
+    -fx-text-fill: #FFFFFF;
+}
+.dataLable{
+    -fx-font-family:'URW DIN Arabic';
+    -fx-font-size: 15px;
+    -fx-background-color: #D4D4D4;
+    -fx-background-radius: 0;
+    -fx-text-fill: #393838;
+}
+.imageStyle.image{
+    -fx-border-color: #393838;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+}
+.image-view-wrapper:border {
+    -fx-border-color: black;
+    -fx-border-style: solid;
+    -fx-border-width: 5;
+}

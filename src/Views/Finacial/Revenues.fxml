@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1200.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlleres.RevenuesController">
+    <stylesheets>
+        <URL value="@/Css/financial.css" />
+    </stylesheets>
+   <children>
+      <HBox layoutX="10.0" layoutY="10.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="61.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="500.0">
+               <children>
+                  <HBox prefHeight="40.0" prefWidth="550.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="التاريخ :" />
+                        <DatePicker fx:id="revenuesdata" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" styleClass="textStyle" stylesheets="@../../Css/pagStyle.css" HBox.hgrow="ALWAYS" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="550.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="البند :" />
+                        <ComboBox fx:id="clause" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="300.0" styleClass="textStyle" stylesheets="@../../Css/pagStyle.css" HBox.hgrow="ALWAYS" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="100.0" prefHeight="40.0" prefWidth="550.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="الوارد بالريال :" />
+                        <TextField fx:id="amount" alignment="CENTER" layoutX="38.0" layoutY="10.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="250.0" styleClass="textStyle" stylesheets="@../../Css/pagStyle.css" HBox.hgrow="ALWAYS" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="40.0" prefWidth="550.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="الوارد كتابة :" />
+                        <TextField fx:id="amountText" alignment="CENTER" layoutX="38.0" layoutY="10.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="250.0" styleClass="textStyle" stylesheets="@../../Css/pagStyle.css" HBox.hgrow="ALWAYS" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="145.0" prefHeight="40.0" prefWidth="550.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="نقدا / شيك :" />
+                        <TextField fx:id="cashOrCheque" alignment="CENTER" layoutX="38.0" layoutY="10.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="250.0" styleClass="textStyle" stylesheets="@../../Css/pagStyle.css" HBox.hgrow="ALWAYS" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="190.0" prefHeight="40.0" prefWidth="550.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="اسم البنك :" />
+                        <TextField fx:id="bankName" alignment="CENTER" layoutX="38.0" layoutY="10.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="250.0" styleClass="textStyle" stylesheets="@../../Css/pagStyle.css" HBox.hgrow="ALWAYS" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="140.0" prefHeight="40.0" prefWidth="550.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="ايراد من :" />
+                        <TextField fx:id="from" alignment="CENTER" layoutX="38.0" layoutY="10.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="250.0" styleClass="textStyle" stylesheets="@../../Css/pagStyle.css" HBox.hgrow="ALWAYS" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="190.0" prefHeight="40.0" prefWidth="550.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="نوع الحساب :" />
+                        <ComboBox fx:id="accounttype" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="300.0" styleClass="textStyle" stylesheets="@../../Css/pagStyle.css" HBox.hgrow="ALWAYS" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Separator prefHeight="8.0" prefWidth="500.0" style="-fx-background-color: #3C3B3B;">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </Separator>
+                  <HBox prefHeight="47.0" prefWidth="500.0">
+                     <children>
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#saveDate" prefHeight="40.0" prefWidth="125.0" styleClass="pageButtonStyle" stylesheets="@../../Css/pagStyle.css" text="حفظ" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets right="2.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#editData" prefHeight="40.0" prefWidth="125.0" styleClass="pageButtonStyle" stylesheets="@../../Css/pagStyle.css" text="تعديل" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets right="2.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button layoutX="135.0" layoutY="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#deleteData" prefHeight="40.0" prefWidth="125.0" styleClass="pageButtonStyle" stylesheets="@../../Css/pagStyle.css" text="حذف" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets right="2.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button layoutX="344.0" layoutY="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#printCatchReceipt" prefHeight="40.0" prefWidth="135.0" styleClass="pageButtonStyle" stylesheets="@../../Css/pagStyle.css" text="طباعة سند قبض" />
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="175.0" prefWidth="500.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="450.0" prefWidth="300.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="53.0" prefWidth="300.0" styleClass="balanceLable" stylesheets="@../../Css/financial.css" text="الرصيد المرحل من العام الماضي" VBox.vgrow="ALWAYS" />
+                              <Label fx:id="carryoverbalance" alignment="CENTER" prefHeight="200.0" prefWidth="300.0" styleClass="previousBalance" stylesheets="@../../Css/financial.css" text="0" VBox.vgrow="ALWAYS">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="450.0" prefWidth="300.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="53.0" prefWidth="300.0" styleClass="balanceLable" stylesheets="@../../Css/financial.css" text="اجمالي الرصيد الحالي " VBox.vgrow="ALWAYS" />
+                              <Label fx:id="totalbalance" alignment="CENTER" prefHeight="200.0" prefWidth="300.0" styleClass="lastBalance" stylesheets="@../../Css/financial.css" text="0" VBox.vgrow="ALWAYS">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="15.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </VBox>
+            <TableView fx:id="revenuesTable" editable="true" prefHeight="200.0" prefWidth="200.0" styleClass="tableStyle" stylesheets="@../../Css/pagStyle.css" HBox.hgrow="ALWAYS">
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+               <columns>
+                  <TableColumn fx:id="revenuesid_col" prefWidth="40.0" text="رقم العملية" />
+                  <TableColumn fx:id="revenuesdata_col" prefWidth="75.0" text="التاريخ" />
+                  <TableColumn fx:id="clause_col" minWidth="80.0" prefWidth="75.0" text="البند" />
+                  <TableColumn fx:id="amount_col" prefWidth="75.0" text="المبلغ" />
+                  <TableColumn fx:id="from_col" minWidth="150.0" prefWidth="75.0" text="ايراد من " />
+                  <TableColumn fx:id="accounttype_col" prefWidth="75.0" text="نوع الحساب" />
+               </columns>
+            </TableView>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

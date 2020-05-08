@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="122.0" prefWidth="329.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Messages.Controllers.ConfirmationController">
+   <children>
+      <VBox fx:id="content" layoutX="10.0" layoutY="10.0" prefHeight="80.0" prefWidth="329.0" stylesheets="@../../Css/massagesStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="42.0" prefWidth="329.0" style="-fx-background-color: #498AA4;">
+               <children>
+                  <ImageView fitHeight="25.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Images/confirmation.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <Label fx:id="messageText" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="43.0" prefWidth="329.0" styleClass="massageText" stylesheets="@../../Css/massagesStyle.css" text="تم حفظ البيانات بنجاح" VBox.vgrow="ALWAYS" />
+            <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="329.0">
+               <children>
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#close" prefHeight="25.0" prefWidth="50.0" styleClass="buttonStyle" stylesheets="@../../Css/massagesStyle.css" text="اغلاق">
+                     <HBox.margin>
+                        <Insets left="2.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#confirmAction" prefHeight="25.0" prefWidth="50.0" styleClass="buttonStyle" stylesheets="@../../Css/massagesStyle.css" text="نعم">
+                     <HBox.margin>
+                        <Insets left="2.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

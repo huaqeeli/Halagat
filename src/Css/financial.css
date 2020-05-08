@@ -1,0 +1,42 @@
+@import "font.css";
+
+.balanceLable {
+    -fx-background-color: #3E3E3E;
+    -fx-font-family:'URW DIN Arabic';
+    -fx-font-size: 15px;
+    -fx-background-radius: 0;
+    -fx-text-fill: #FFFFFF;
+     -fx-effect: dropshadow(three-pass-box,#3C3B3B, 30, 0, 5, 5); 
+}
+.lastBalance{
+    -fx-background-color: #367F00;
+    -fx-font-family:'URW DIN Arabic';
+    -fx-font-size: 60px;
+    -fx-background-radius: 0;
+    -fx-text-fill: #FFFFFF;
+     -fx-effect: dropshadow(three-pass-box,#3C3B3B, 30, 0, 5, 5); 
+}
+.lastBalance1{
+    -fx-background-color: #367F00;
+    -fx-font-family:'URW DIN Arabic';
+    -fx-font-size: 60px;
+    -fx-background-radius: 0;
+    -fx-text-fill: #FFFFFF;
+     -fx-effect: dropshadow(three-pass-box,#3C3B3B, 30, 0, 5, 5); 
+}
+.previousBalance{
+    -fx-background-color: #CF0000;
+    -fx-font-family:'URW DIN Arabic';
+    -fx-font-size: 60px;
+    -fx-background-radius: 0;
+    -fx-text-fill: #FFFFFF;
+     -fx-effect: dropshadow(three-pass-box,#3C3B3B, 30, 0, 5, 5); 
+}
+.loanBalance{
+    -fx-background-color: #65A9A9;
+    -fx-font-family:'URW DIN Arabic';
+    -fx-font-size:50px;
+    -fx-background-radius: 0;
+    -fx-text-fill: #FFFFFF;
+     -fx-effect: dropshadow(three-pass-box,#3C3B3B, 30, 0, 5, 5); 
+}

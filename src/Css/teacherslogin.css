@@ -1,0 +1,32 @@
+.tableStyle .column-header{
+    -fx-background-color: #344242;
+    -fx-border-color:#FFFFFF;
+
+}
+.tableStyle .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-family:'URW DIN Arabic';
+    -fx-font-size: 10px;
+    -fx-padding: 8px;
+}
+.textField{
+    -fx-background-radius: 0;
+    -fx-background-color: #C5E4D5;
+    -fx-border-color: #67B791;
+    -fx-border-insets: 0;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-style: solid;
+}
+/*.textField:hover{
+     -fx-border-color: #0078D7;
+    -fx-border-insets: 0;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-style: solid;
+}*/
+.textField:focused{
+    -fx-border-color: #0078D7;
+    -fx-border-insets: 0;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-style: solid;
+}

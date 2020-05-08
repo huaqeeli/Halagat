@@ -1,0 +1,24 @@
+@import "font.css";
+.mainClass {
+/*    -fx-font-family:'Droid-Arabic-Kufi';
+    -fx-font-size: 18px;*/
+}
+
+.buttonStyle {
+    -fx-font-family:'URW DIN Arabic';
+    -fx-font-size: 20px;
+    -fx-background-color: #32BFF0;
+    -fx-background-radius: 0;
+    -fx-text-fill: #FFFFFF;
+    -fx-effect: dropshadow(three-pass-box,#3C3B3B, 20, 0, 20, 20); 
+}
+.buttonStyle:hover{
+    -fx-background-color: #75CEED;
+}
+.rightButton{//top right top lifet 
+    -fx-background-radius: 0 80 80 0 ;
+}
+.lifteButton{
+    -fx-background-radius: 80 0 0 80 ; 
+}
+

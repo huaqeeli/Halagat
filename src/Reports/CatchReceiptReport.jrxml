@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CatchReceiptReport" pageWidth="595" pageHeight="425" columnWidth="591" leftMargin="2" rightMargin="2" topMargin="2" bottomMargin="2" uuid="72324917-2587-440f-a6f8-adbc6579f057">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="NewDataAdapter.xml"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="revenuedId" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT halagatdb.logofile.`logoImage`,
+	halagatdb.revenues.`REVENUESID`,
+	halagatdb.revenues.`REVENUESDATE`,
+	halagatdb.revenues.`CLAUSE`,
+	halagatdb.revenues.`AMOUNT`,
+	halagatdb.revenues.`FROM`,
+	halagatdb.revenues.`ACCOUNTTYPE`,
+	halagatdb.revenues.`FISCALYEAR`,
+	halagatdb.revenues.AMOUNTTEXT,
+	halagatdb.revenues.`CASHORCHEQUENO`,
+	halagatdb.revenues.`BANKNAME`,
+	halagatdb.logofile.`whterLogo`
+FROM halagatdb.revenues,
+	halagatdb.logofile
+	where halagatdb.revenues.`REVENUESID` =  $P{revenuedId}]]>
+	</queryString>
+	<field name="logoImage" class="java.awt.Image">
+		<property name="com.jaspersoft.studio.field.label" value="logoImage"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="logofile"/>
+	</field>
+	<field name="REVENUESID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="REVENUESID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="revenues"/>
+	</field>
+	<field name="REVENUESDATE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="REVENUESDATE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="revenues"/>
+	</field>
+	<field name="CLAUSE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CLAUSE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="revenues"/>
+	</field>
+	<field name="AMOUNT" class="java.lang.Float">
+		<property name="com.jaspersoft.studio.field.label" value="AMOUNT"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="revenues"/>
+	</field>
+	<field name="FROM" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="FROM"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="revenues"/>
+	</field>
+	<field name="ACCOUNTTYPE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ACCOUNTTYPE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="revenues"/>
+	</field>
+	<field name="FISCALYEAR" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="FISCALYEAR"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="revenues"/>
+	</field>
+	<field name="AMOUNTTEXT" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="AMOUNTTEXT"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="revenues"/>
+	</field>
+	<field name="CASHORCHEQUENO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CASHORCHEQUENO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="revenues"/>
+	</field>
+	<field name="BANKNAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="BANKNAME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="revenues"/>
+	</field>
+	<field name="whterLogo" class="java.awt.Image">
+		<property name="com.jaspersoft.studio.field.label" value="whterLogo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="logofile"/>
+	</field>
+	<background>
+		<band height="421" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="0" y="0" width="591" height="421" uuid="c10a5b1e-6d86-43dd-bc85-6efa2f701d57"/>
+				<imageExpression><![CDATA[$F{whterLogo}]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="92" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="26" width="100" height="20" uuid="305d72a7-e377-4b12-a362-66eb1158d0f8">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{REVENUESDATE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="100" y="26" width="42" height="20" uuid="f2da3f07-456e-4245-b9c8-6a03fa47e333">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[التاريخ :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="240" y="70" width="120" height="22" uuid="a847f672-3346-4ae0-b32e-a1dc0e4d7c80"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[سند قبض]]></text>
+			</staticText>
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="240" y="8" width="120" height="56" uuid="21527cae-ae0a-4b56-9257-871c783e3d6c"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<imageExpression><![CDATA[$F{logoImage}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="425" y="11" width="164" height="30" uuid="0fe39a3f-5677-4d45-b305-e26037cec83d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="8"/>
+				</textElement>
+				<text><![CDATA[الجمعية الخرية لتحفيظ القران الكريم بمنطقة الرياض]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="425" y="2" width="164" height="30" uuid="7222ce55-6622-4d18-8bf2-a5bb03ef9c6a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="8"/>
+				</textElement>
+				<text><![CDATA[المملكة العربية السعودية]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="425" y="22" width="164" height="30" uuid="3fb1d1f4-1e9c-4894-8cae-a8a265d3f9b2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="8"/>
+				</textElement>
+				<text><![CDATA[مركز العزيزية - مجمع الصحابة لتعليم القران الكريم وعلومه  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="425" y="32" width="164" height="30" uuid="b4e0acb1-d50c-4cb7-b2c0-5b885fb1acea">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="8"/>
+				</textElement>
+				<text><![CDATA[تصريح رقم (21/1/10)]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="6" width="100" height="20" uuid="ccddb741-eb27-4524-b858-049b0db26488">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{REVENUESID}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="100" y="6" width="42" height="20" uuid="2cc8cacd-ad0c-423d-8810-e166ac6e4240">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[الرقم :]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="268" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="10" width="591" height="190" uuid="008344f7-c741-43ba-8c05-ed658304b02e"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textField>
+					<reportElement mode="Opaque" x="120" y="47" width="350" height="30" backcolor="#ECECEC" uuid="b628341a-adbb-46b2-902c-cb2894705605"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{FROM}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="470" y="47" width="100" height="30" backcolor="#CFCFCF" uuid="cb1de3cc-387a-4501-9905-134225a3d1c9"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[استلمنا من السيد / السادة :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="20" y="47" width="100" height="30" backcolor="#CFCFCF" uuid="31fa5143-cafe-433d-b3ed-40539dc83a26"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Received From Mrs :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="20" y="79" width="100" height="30" backcolor="#CFCFCF" uuid="84b4f4e3-93ac-4b0d-b69b-aeba17b22e4d"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Amount :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="470" y="79" width="100" height="30" backcolor="#CFCFCF" uuid="c90ca3fb-d16d-423e-b515-63eeff34a561"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[مبلغ وقدره :]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="120" y="79" width="350" height="30" backcolor="#ECECEC" uuid="9d81cb33-04c9-46ef-8db5-45f36d4cb03d"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{AMOUNTTEXT}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="20" y="111" width="100" height="30" backcolor="#CFCFCF" uuid="eba1903c-e79c-4df9-a173-682323b18b3e"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Bank :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="470" y="111" width="100" height="30" backcolor="#CFCFCF" uuid="068e2c58-7965-474a-b92a-a8dfdf90294e"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[نقدا / شيك رقم :]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="120" y="143" width="351" height="30" backcolor="#ECECEC" uuid="831a129c-3de5-48dd-bbdc-eee5dd3052f0"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{ACCOUNTTYPE}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="471" y="143" width="100" height="30" backcolor="#CFCFCF" uuid="0cfe3e60-5b2c-4306-9490-2a19402f4e68"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[وذلك مقابل :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="20" y="143" width="100" height="30" backcolor="#CFCFCF" uuid="4b521e26-38aa-4840-8352-5771b9adfe37"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Being :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="300" y="111" width="100" height="30" backcolor="#CFCFCF" uuid="27743018-cde0-4754-a98e-1a7f1bbe4ce6"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Cash / ChequeNo : ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="228" y="111" width="70" height="30" backcolor="#CFCFCF" uuid="925eeb1c-0672-42ba-b876-323fbd7e6432">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[علي بنك :]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="400" y="111" width="70" height="30" backcolor="#ECECEC" uuid="f8052f30-2381-44d2-af77-1ce50ccd1951"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{CASHORCHEQUENO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement mode="Opaque" x="120" y="111" width="108" height="30" backcolor="#ECECEC" uuid="39a29e45-28e0-48c8-9177-b5c30edd9d46"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{BANKNAME}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement mode="Opaque" x="510" y="24" width="60" height="20" backcolor="#CFCFCF" uuid="af71c749-1cfa-4642-bc47-aee72db79fb9">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{AMOUNT}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="470" y="24" width="40" height="20" backcolor="#CFCFCF" uuid="1ce65314-7e8a-4d9a-8df6-f767c63ce380">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="false"/>
+					</textElement>
+					<text><![CDATA[ريال SR]]></text>
+				</staticText>
+			</frame>
+			<staticText>
+				<reportElement mode="Opaque" x="470" y="230" width="100" height="22" backcolor="#CFCFCF" uuid="7a10fa2b-3d14-4ff9-a0c3-f2c87b82734a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[المحاسب:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="192" y="230" width="108" height="22" backcolor="#CFCFCF" uuid="c18050ab-0804-4b93-b94b-c314bf6cb535"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[المستلم :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="300" y="230" width="171" height="22" backcolor="#ECECEC" uuid="92122b49-9414-43f1-bf1d-5fb173cb6a51"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="21" y="230" width="171" height="22" backcolor="#ECECEC" uuid="88e91c0c-5fa2-41ee-9686-74b631c8da89"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

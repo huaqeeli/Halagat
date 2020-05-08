@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1200.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlleres.NewHalaghController">
+    <stylesheets>
+        <URL value="@/Css/admission.css" />
+    </stylesheets>
+   <children>
+      <HBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="500.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="500.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="37.0" prefWidth="136.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="اسم الحلقة :" />
+                        <TextField fx:id="halagahName" alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="310.0" styleClass="textStyle" stylesheets="@../../Css/pagStyle.css" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="37.0" prefWidth="136.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="اسم معلم الحلقة :" />
+                        <ComboBox fx:id="teacherName" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="150.0" styleClass="textStyle" stylesheets="@../../Css/pagStyle.css" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="50.0" prefHeight="40.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="37.0" prefWidth="136.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="المستوى :" />
+                        <ComboBox fx:id="level" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="150.0" styleClass="textStyle" stylesheets="@../../Css/pagStyle.css" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="38.0" prefWidth="500.0">
+                     <children>
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#saveData" prefHeight="30.0" prefWidth="150.0" styleClass="pageButtonStyle" stylesheets="@../../Css/pagStyle.css" text="حفظ" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets left="2.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#editData" prefHeight="30.0" prefWidth="150.0" styleClass="pageButtonStyle" stylesheets="@../../Css/pagStyle.css" text="تعديل" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets left="2.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteData" prefHeight="30.0" prefWidth="150.0" styleClass="pageButtonStyle" stylesheets="@../../Css/pagStyle.css" text="حذف" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets left="2.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </VBox>
+            <TableView fx:id="halagatTable" nodeOrientation="RIGHT_TO_LEFT" prefHeight="200.0" prefWidth="200.0" styleClass="tableStyle" stylesheets="@../../Css/pagStyle.css" HBox.hgrow="ALWAYS">
+              <columns>
+                <TableColumn fx:id="halagahId_col" prefWidth="75.0" text="رقم الحلقة" />
+                <TableColumn fx:id="halagahName_col" prefWidth="75.0" text="اسم الحلقة" />
+                  <TableColumn fx:id="teacherName_col" prefWidth="75.0" text="اسم معلم الحلقة" />
+                  <TableColumn fx:id="level_col" prefWidth="75.0" text="المستوى" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

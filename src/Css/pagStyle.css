@@ -1,0 +1,91 @@
+@import "font.css";
+
+.sideBar {
+    -fx-font-family:'URW DIN Arabic';
+    -fx-font-size: 15px;
+    -fx-background-color: #282727;
+    -fx-background-radius: 0;
+    -fx-text-fill: #FFFFFF;
+}
+.sideBar:hover{
+    -fx-background-color: #141313;
+}
+.pagHeaderStyl{
+    -fx-background-color: #3C3B3B;
+}
+.titelLable{
+    -fx-font-family:'URW DIN Arabic';
+    -fx-font-size: 15px;
+    -fx-text-fill: #FFFFFF;
+}
+.pageButtonStyle{
+    -fx-font-family: "URW DIN Arabic";
+    -fx-font-size: 15px;
+    -fx-background-color: #3C3B3B;
+    -fx-background-radius: 0;
+    -fx-text-fill: #FFFFFF;
+    -fx-effect: dropshadow(three-pass-box,#3C3B3B, 20, 0, 5, 5); 
+}
+.pageButtonStyle:hover{
+    -fx-background-color: #32BFF0;
+}
+/*.tableStyle{
+    -fx-background-color: transparent;
+}
+.tableStyle:focused{
+    -fx-background-color: transparent;
+}*/
+.tableStyle .column-header{
+    -fx-background-color: #344242;
+    -fx-border-color:#FFFFFF;
+
+}
+.tableStyle .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-family:'URW DIN Arabic';
+    -fx-font-size: 13px;
+    -fx-padding: 10px;
+}
+.tableStyle .table-cell{
+    -fx-alignment: CENTER;
+    -fx-font-family: 'URW DIN Arabic';
+    -fx-font-size: 13px;
+}
+.tableStyle .table-cell .Button{
+    -fx-font-family: "URW DIN Arabic";
+    -fx-font-size: 10px;
+    -fx-background-color: #3C3B3B;
+    -fx-background-radius: 0;
+    -fx-text-fill: #FFFFFF;
+    -fx-effect: dropshadow(three-pass-box,#3C3B3B, 20, 0, 5, 5); 
+}
+
+.labelText{
+    -fx-font-family:'URW DIN Arabic';
+    -fx-font-size: 13px;
+    -fx-text-fill: #3C3B3B;
+}
+.listStyle{
+    -fx-font-family: "URW DIN Arabic";
+    -fx-font-size: 10px;
+    -fx-background-color: #262525;
+    -fx-background-radius: 0;
+}
+.listStyle .text{
+-fx-fill: rgb(130.0, 130.0, 130.0);
+-fx-alignment: CENTER;
+}
+.listStyle:hover{
+    -fx-background-color: #141313;
+}
+.textStyle{
+    -fx-font-family:'URW DIN Arabic';
+    -fx-font-size: 13px;
+    -fx-text-fill: #3C3B3B;
+     -fx-background-radius: 0;
+     -fx-border-color: #344242;
+     -fx-border-width: 1px;
+     -fx-border-style: solid;
+     -fx-background-color: #FFFFFF;
+}

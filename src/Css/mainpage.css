@@ -1,0 +1,116 @@
+@import "font.css";
+
+.mainClass {
+    -fx-background-image: url(../Images/homeBg.png);
+    /*-fx-border-image-repeat: round;*/  
+    /*-fx-background-size: 900 506;*/
+    -fx-background-position: center center;
+    /*-fx-effect: dropshadow(three-pass-box,#FFFFFF, 0, 0, 0, 30);*/ 
+}
+
+.buttonStyle {
+    -fx-font-family:'URW DIN Arabic';
+    -fx-font-size: 15px;
+    -fx-background-color: #38586E;
+    -fx-background-radius: 0;
+    -fx-text-fill: #FFFFFF;
+}
+.headerStyl{
+    -fx-background-image: url(../Images/headerBg.png);
+    /*-fx-border-image-repeat: stretch, stretch;*/
+    -fx-background-position: center center;
+
+}
+.headerBorder{
+    -fx-border-color: #2B8FDE;
+    -fx-border-insets: 0;
+    -fx-border-width: 0 0 5 0;
+    -fx-border-style: solid;
+}
+.titelLable{
+    -fx-font-family:'URW DIN Arabic';
+    -fx-font-size: 15px;
+    -fx-text-fill: #FFFFFF;
+}
+.sideBar{
+    -fx-font-family:'URW DIN Arabic';
+    -fx-font-size: 10px;
+    -fx-background-color: #7B7A7A;
+    -fx-background-radius: 0;
+    -fx-text-fill: #FFFFFF;
+}
+.sideBar:hover{
+    -fx-background-color: #000;
+}
+
+.toolBar{
+    -fx-font-family:'URW DIN Arabic';
+    -fx-font-size: 10px;
+    -fx-background-color: #7B7A7A;
+    -fx-background-radius: 0;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: #04f7e9;
+    -fx-border-width: 0 0 2 0;
+}
+.toolBar:hover{
+    -fx-background-color: #000;
+}
+
+.toolBarR{
+    -fx-font-family:'URW DIN Arabic';
+    -fx-font-size: 10px;
+    -fx-background-color: #7B7A7A;
+    -fx-background-radius: 0 0 0 200;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: #04f7e9;
+    -fx-border-width: 0 0 2 2;
+     -fx-border-radius: 0 0 0 200;
+}
+.toolBarR:hover{
+    -fx-background-color: #000;
+}
+.toolBarL{
+    -fx-font-family:'URW DIN Arabic';
+    -fx-font-size: 10px;
+    -fx-background-color: #7B7A7A;
+    -fx-background-radius: 0 0 200 0;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: #04f7e9;
+    -fx-border-width: 0 2 2 0;
+    -fx-border-radius: 0 0 200 0;
+}
+.toolBarL:hover{
+    -fx-background-color: #000;
+}
+.jfx-hamburger StackPane {
+    -fx-background-color: white; 
+}
+.logo {
+    -fx-effect: dropshadow(three-pass-box,#000, 30, 0, 15, 15);
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+}
+.usernameLable{
+    -fx-font-family: "URW DIN Arabic";
+    -fx-font-size:10px;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #343333;
+    -fx-background-radius: 20 20 20 20;
+    -fx-effect: dropshadow(three-pass-box,#000, 30, 0,15, 15);
+    /*    -fx-border-color: #61A8C0;
+        -fx-border-insets: 0;
+        -fx-border-width: .5;
+        -fx-border-style: solid;
+        -fx-border-radius: 20 20 20 20;*/
+}
+.logout {
+    -fx-effect: dropshadow(three-pass-box,#000, 30, 0,10, 10);
+    -fx-background-color: #343333;
+}
+.toolbarStyle{
+    -fx-background-color: #343333;
+    -fx-border-radius: 0;
+    -fx-effect: dropshadow(three-pass-box,#000, 30, 0, 15, 15);
+}
+

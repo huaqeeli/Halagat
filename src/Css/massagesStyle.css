@@ -1,0 +1,19 @@
+@import "font.css";
+
+.buttonStyle {
+    -fx-font-family: "URW DIN Arabic";
+    -fx-font-size: 10px;
+    -fx-background-color: #3C3B3B;
+    /*-fx-background-radius: 0;*/
+    -fx-text-fill: #FFFFFF;
+    -fx-effect: dropshadow(three-pass-box,#3C3B3B, 20, 0, 5, 5); 
+}
+.massageText{
+    -fx-font-family: "URW DIN Arabic";
+    -fx-font-size: 15px;
+    -fx-text-fill: #282727;
+    -fx-border-color: #272626;
+    -fx-border-insets: 0;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-style: solid;
+}

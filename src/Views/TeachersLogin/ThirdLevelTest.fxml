@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1200.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controlleres.ThirdLevelTestController">
+   <children>
+      <HBox layoutX="40.0" layoutY="40.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="61.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <TableView maxHeight="1.7976931348623157E308" prefHeight="800.0" prefWidth="300.0" styleClass="tableStyle" stylesheets="@../../Css/teacherslogin.css">
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+               <columns>
+                  <TableColumn fx:id="name_col1" prefWidth="75.0" text="رقم الطالب" />
+                  <TableColumn fx:id="name_col" minWidth="150.0" prefWidth="75.0" text="اسم الطالب" />
+               </columns>
+            </TableView>
+            <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <VBox prefHeight="280.0" prefWidth="880.0">
+                     <children>
+                        <HBox alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" prefHeight="40.0" prefWidth="780.0" style="-fx-background-color: #C5E4D5;">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="رقم الطالب :" />
+                              <Label contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="35.0" prefWidth="55.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="123456" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="61.0" prefHeight="35.0" prefWidth="82.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="اسم الطالب :" />
+                              <Label contentDisplay="CENTER" layoutX="135.0" layoutY="61.0" prefHeight="35.0" prefWidth="190.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="حسين بن احمد عبدالله عقيلي" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="396.0" layoutY="23.0" prefHeight="35.0" prefWidth="95.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="مسمى الاختبار:" />
+                              <TextField fx:id="issuePlace" alignment="CENTER" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="21.0" prefWidth="323.0" styleClass="textField" stylesheets="@../../Css/teacherslogin.css" HBox.hgrow="ALWAYS" />
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="180.0" prefHeight="40.0" prefWidth="550.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="35.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="مقدار الحفظ من : " />
+                              <TextField fx:id="mobileNumber" alignment="CENTER" layoutX="38.0" layoutY="10.0" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="250.0" HBox.hgrow="ALWAYS" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="مقدار الحفظ الى : " />
+                              <TextField fx:id="level" alignment="CENTER" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="250.0" HBox.hgrow="ALWAYS" />
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="140.0" prefHeight="40.0" prefWidth="550.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="35.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="درجة المقطع 1 :" />
+                              <TextField fx:id="issuePlace11" alignment="CENTER" layoutX="260.0" layoutY="10.0" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="50.0" HBox.hgrow="ALWAYS" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="درجة المقطع 2 :" />
+                              <TextField fx:id="issuePlace1" alignment="CENTER" layoutX="525.0" layoutY="10.0" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="50.0" HBox.hgrow="ALWAYS" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="216.0" layoutY="10.0" prefHeight="35.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="درجة المقطع 3 :" />
+                              <TextField fx:id="issuePlace12" alignment="CENTER" layoutX="356.0" layoutY="10.0" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="50.0" HBox.hgrow="ALWAYS" />
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="81.0" prefHeight="40.0" prefWidth="550.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="35.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="درجة المقطع 4 :" />
+                              <TextField fx:id="issuePlace112" alignment="CENTER" layoutX="260.0" layoutY="10.0" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="50.0" HBox.hgrow="ALWAYS" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="درجة المقطع 5 :" />
+                              <TextField fx:id="issuePlace11" alignment="CENTER" layoutX="525.0" layoutY="10.0" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="50.0" HBox.hgrow="ALWAYS" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="216.0" layoutY="10.0" prefHeight="35.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="درجة المقطع 6 :" />
+                              <TextField fx:id="issuePlace121" alignment="CENTER" layoutX="356.0" layoutY="10.0" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="50.0" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="70.0" prefHeight="40.0" prefWidth="550.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="35.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="درجة المقطع 7 :" />
+                              <TextField fx:id="issuePlace111" alignment="CENTER" layoutX="260.0" layoutY="10.0" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="50.0" HBox.hgrow="ALWAYS" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="درجة المقطع 8 :" />
+                              <TextField fx:id="issuePlace11" alignment="CENTER" layoutX="525.0" layoutY="10.0" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="50.0" HBox.hgrow="ALWAYS" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="216.0" layoutY="10.0" prefHeight="35.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="درجة المقطع 9 :" />
+                              <TextField fx:id="issuePlace121" alignment="CENTER" layoutX="356.0" layoutY="10.0" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="50.0" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="136.0" prefHeight="40.0" prefWidth="550.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="35.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="درجة المقطع 10 :" />
+                              <TextField fx:id="issuePlace1111" alignment="CENTER" layoutX="260.0" layoutY="10.0" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="50.0" HBox.hgrow="ALWAYS" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="216.0" layoutY="10.0" prefHeight="35.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="درجة التجويد :" />
+                              <TextField fx:id="issuePlace1211" alignment="CENTER" layoutX="356.0" layoutY="10.0" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="50.0" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                        <Separator prefHeight="8.0" prefWidth="500.0" style="-fx-background-color: #3C3B3B;">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </Separator>
+                        <HBox prefHeight="47.0" prefWidth="500.0">
+                           <children>
+                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" prefWidth="125.0" styleClass="pageButtonStyle" stylesheets="@../../Css/pagStyle.css" text="حفظ" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets right="2.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" prefWidth="125.0" styleClass="pageButtonStyle" stylesheets="@../../Css/pagStyle.css" text="تعديل" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets right="2.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button layoutX="135.0" layoutY="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" prefWidth="125.0" styleClass="pageButtonStyle" stylesheets="@../../Css/pagStyle.css" text="حذف" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                        <Separator layoutX="10.0" layoutY="268.0" prefHeight="8.0" prefWidth="500.0" style="-fx-background-color: #3C3B3B;">
+                           <VBox.margin>
+                              <Insets bottom="10.0" top="10.0" />
+                           </VBox.margin>
+                        </Separator>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <TableView prefHeight="553.0" prefWidth="880.0" styleClass="tableStyle" stylesheets="@../../Css/teacherslogin.css" VBox.vgrow="ALWAYS">
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                     <columns>
+                        <TableColumn minWidth="100.0" prefWidth="261.0" text="الاسم" />
+                        <TableColumn prefWidth="75.0" text="مقدار الحفظ">
+                           <columns>
+                              <TableColumn prefWidth="75.0" text="من" />
+                              <TableColumn prefWidth="75.0" text="إلى" />
+                           </columns>
+                        </TableColumn>
+                        <TableColumn prefWidth="40.0" text="م1" />
+                        <TableColumn prefWidth="40.0" text="م2" />
+                        <TableColumn prefWidth="40.0" text="م3" />
+                        <TableColumn prefWidth="40.0" text="م4" />
+                        <TableColumn prefWidth="40.0" text="م5" />
+                        <TableColumn prefWidth="40.0" text="م6" />
+                        <TableColumn prefWidth="40.0" text="م7" />
+                        <TableColumn prefWidth="40.0" text="م8" />
+                        <TableColumn prefWidth="40.0" text="م9" />
+                        <TableColumn prefWidth="40.0" text="م10" />
+                        <TableColumn prefWidth="40.0" text="التجويد" />
+                        <TableColumn prefWidth="75.0" text="المجموع" />
+                     </columns>
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </TableView>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
