@@ -36,3 +36,13 @@
 .buttonStyle:hover{
     -fx-background-color: #000;
 }
+.changePassowrdPuttonStyle {
+   -fx-font-family: "URW DIN Arabic";
+    -fx-font-size: 13px;
+    -fx-background-color: #444F52;
+    -fx-background-radius: 0;
+    -fx-text-fill: #0078D7;
+}
+.changePassowrdPuttonStyle:hover{
+   -fx-text-fill: #FFFFFF;
+}

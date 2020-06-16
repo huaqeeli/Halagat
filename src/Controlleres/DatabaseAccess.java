@@ -8,18 +8,19 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 
 public class DatabaseAccess {
 
-    public static void insert(String tapleName, String fildName, String valueNamber, String[] data) throws IOException {
-
+    public static int insert(String tapleName, String fildName, String valueNamber, String[] data) throws IOException {
+        int lastId = 0;
         Connection con = DatabaseConnector.dbConnector();
         String guiry = "INSERT INTO " + tapleName + "(" + fildName + ")VALUES(" + valueNamber + ")";
         try {
-            PreparedStatement psm = con.prepareStatement(guiry);
+            PreparedStatement psm = con.prepareStatement(guiry, Statement.RETURN_GENERATED_KEYS);
             int e = data.length;
             for (int i = 1; i <= e; i++) {
                 psm.setString(i, data[i - 1]);
@@ -30,20 +31,26 @@ public class DatabaseAccess {
                 ShowMessage showMessage = new ShowMessage();
                 showMessage.error("حدث خطاء في عملية الحفظ الرجاء المحاولة مرة اخرى");
             }
+            ResultSet rs = psm.getGeneratedKeys();
+            if (rs.next()) {
+                lastId = rs.getInt(1);
+            }
             con.close();
             psm.close();
+            rs.close();
         } catch (SQLException ex) {
             ShowMessage showMessage = new ShowMessage();
             showMessage.error(ex.toString());
         }
+        return lastId;
     }
 
-    public static void insert(String tapleName, String fildName, String valueNamber, String[] data, File imagefile) throws IOException {
-
+    public static int insert(String tapleName, String fildName, String valueNamber, String[] data, File imagefile) throws IOException {
+        int lastId = 0;
         Connection con = DatabaseConnector.dbConnector();
         String guiry = "INSERT INTO " + tapleName + "(" + fildName + ")VALUES(" + valueNamber + ")";
         try {
-            PreparedStatement psm = con.prepareStatement(guiry);
+            PreparedStatement psm = con.prepareStatement(guiry, Statement.RETURN_GENERATED_KEYS);
             int e = data.length;
             for (int i = 1; i <= e; i++) {
                 psm.setString(i, data[i - 1]);
@@ -59,12 +66,18 @@ public class DatabaseAccess {
                 ShowMessage showMessage = new ShowMessage();
                 showMessage.error("حدث خطاء في عملية الحفظ الرجاء المحاولة مرة اخرى");
             }
+            ResultSet rs = psm.getGeneratedKeys();
+            if (rs.next()) {
+                lastId = rs.getInt(1);
+            }
             con.close();
             psm.close();
+            rs.close();
         } catch (SQLException ex) {
             ShowMessage showMessage = new ShowMessage();
             showMessage.error(ex.toString());
         }
+        return lastId;
     }
 
     public static void updat(String tapleName, String fildNameAndValue, String[] data, String condition) throws IOException {
@@ -81,6 +94,8 @@ public class DatabaseAccess {
                 ShowMessage showMessage = new ShowMessage();
                 showMessage.success("تم تحديث البيانات");
             }
+            con.close();
+            psm.close();
         } catch (SQLException ex) {
             ShowMessage showMessage = new ShowMessage();
             showMessage.error(ex.toString());
@@ -97,6 +112,8 @@ public class DatabaseAccess {
                 psm.setFloat(i, data[i - 1]);
             }
             psm.executeUpdate();
+            con.close();
+            psm.close();
         } catch (SQLException ex) {
             ShowMessage showMessage = new ShowMessage();
             showMessage.error(ex.toString());
@@ -122,6 +139,8 @@ public class DatabaseAccess {
                 ShowMessage showMessage = new ShowMessage();
                 showMessage.success("تم تحديث البيانات");
             }
+            con.close();
+            psm.close();
         } catch (SQLException ex) {
             ShowMessage showMessage = new ShowMessage();
             showMessage.error(ex.toString());
@@ -134,7 +153,8 @@ public class DatabaseAccess {
         try {
             PreparedStatement psm = con.prepareStatement(guiry);
             psm.executeUpdate();
-
+            con.close();
+            psm.close();
         } catch (SQLException ex) {
             ShowMessage showMessage = new ShowMessage();
             showMessage.error(ex.toString());
@@ -150,6 +170,38 @@ public class DatabaseAccess {
             if (alert.getResult() == ButtonType.YES) {
                 psm.executeUpdate();
             }
+            con.close();
+            psm.close();
+        } catch (SQLException ex) {
+            ShowMessage showMessage = new ShowMessage();
+            showMessage.error(ex.toString());
+        }
+    }
+    public static void delete(String tapleName, String condition,String masge) throws IOException {
+        Connection con = DatabaseConnector.dbConnector();
+        String guiry = "DELETE FROM " + tapleName + " WHERE " + condition;
+        try {
+            PreparedStatement psm = con.prepareStatement(guiry);
+            Alert alert = Validation.confirmationDilog("تاكيد الحذف",masge );
+            if (alert.getResult() == ButtonType.YES) {
+                psm.executeUpdate();
+            }
+            con.close();
+            psm.close();
+        } catch (SQLException ex) {
+            ShowMessage showMessage = new ShowMessage();
+            showMessage.error(ex.toString());
+        }
+    }
+
+    public static void deletePower(String tapleName, String condition) throws IOException {
+        Connection con = DatabaseConnector.dbConnector();
+        String guiry = "DELETE FROM " + tapleName + " WHERE " + condition;
+        try {
+            PreparedStatement psm = con.prepareStatement(guiry);
+            psm.executeUpdate();
+            con.close();
+            psm.close();
         } catch (SQLException ex) {
             ShowMessage showMessage = new ShowMessage();
             showMessage.error(ex.toString());
@@ -164,6 +216,23 @@ public class DatabaseAccess {
             if (alert.getResult() == ButtonType.YES) {
                 psm.executeUpdate();
             }
+            con.close();
+            psm.close();
+        } catch (SQLException ex) {
+            ShowMessage showMessage = new ShowMessage();
+            showMessage.error(ex.toString());
+        }
+    }
+    public static void deletem(String quiry ,String masge) throws IOException {
+        Connection con = DatabaseConnector.dbConnector();
+        try {
+            PreparedStatement psm = con.prepareStatement(quiry);
+            Alert alert = Validation.confirmationDilog("تاكيد الحذف",masge);
+            if (alert.getResult() == ButtonType.YES) {
+                psm.executeUpdate();
+            }
+            con.close();
+            psm.close();
         } catch (SQLException ex) {
             ShowMessage showMessage = new ShowMessage();
             showMessage.error(ex.toString());
@@ -173,6 +242,33 @@ public class DatabaseAccess {
     public static ResultSet select(String tapleName, String condition) throws IOException {
         ResultSet rs = null;
         String guiry = "SELECT * FROM " + tapleName + " " + "WHERE" + " " + condition;
+        Connection con = DatabaseConnector.dbConnector();
+        try {
+            PreparedStatement psm = con.prepareStatement(guiry);
+            rs = psm.executeQuery();
+        } catch (SQLException ex) {
+            ShowMessage showMessage = new ShowMessage();
+            showMessage.error(ex.toString());
+        }
+        return rs;
+    }
+
+    public static ResultSet select(String tapleName, String fildName, String as, String condition) throws IOException {
+        ResultSet rs = null;
+        String guiry = "SELECT SUM(" + " " + fildName + " " + ") AS " + " " + as + " " + "FROM" + " " + tapleName + " " + "WHERE" + " " + condition;
+        Connection con = DatabaseConnector.dbConnector();
+        try {
+            PreparedStatement psm = con.prepareStatement(guiry);
+            rs = psm.executeQuery();
+        } catch (SQLException ex) {
+            ShowMessage showMessage = new ShowMessage();
+            showMessage.error(ex.toString());
+        }
+        return rs;
+    }
+    public static ResultSet select(String tapleName, String fildName, String as) throws IOException {
+        ResultSet rs = null;
+        String guiry = "SELECT SUM(" + " " + fildName + " " + ") AS " + " " + as + " " + "FROM" + " " + tapleName;
         Connection con = DatabaseConnector.dbConnector();
         try {
             PreparedStatement psm = con.prepareStatement(guiry);

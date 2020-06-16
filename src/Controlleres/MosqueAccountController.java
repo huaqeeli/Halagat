@@ -1,7 +1,6 @@
 package Controlleres;
 
-import Models.BankAccountModel;
-import Models.FurnitureModel;
+import Models.MosqueAccountModel;
 import com.jfoenix.controls.JFXDatePicker;
 import java.io.IOException;
 import java.net.URL;
@@ -25,7 +24,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class BankAccountController implements Initializable {
+public class MosqueAccountController implements Initializable {
 
     @FXML
     private JFXDatePicker oprationdate;
@@ -38,17 +37,13 @@ public class BankAccountController implements Initializable {
     @FXML
     private TextField notes;
     @FXML
-    private TextField Initialbalance;
-    @FXML
-    private Label initialbalanceview;
+    private Label totalpaymanet;
     @FXML
     private Label totalcost;
     @FXML
-    private Label totalpaymanet;
-    @FXML
     private Label totalbalance;
     @FXML
-    private TableView<BankAccountModel> bankaccountTable;
+    private TableView<MosqueAccountModel> mosqueaccountTable;
     @FXML
     private TableColumn<?, ?> oprationid_col;
     @FXML
@@ -61,24 +56,25 @@ public class BankAccountController implements Initializable {
     private TableColumn<?, ?> depositorname_col;
     @FXML
     private TableColumn<?, ?> notes_col;
-    String balanceId = BalanceController.getBalanceId();;
+    String balanceId = BalanceController.getBalanceId();
+
     String oprationId = null;
     String oprationType = null;
     float curentAmount = 0;
-    ObservableList<BankAccountModel> banklist = FXCollections.observableArrayList();
+    ObservableList<MosqueAccountModel> moaquelist = FXCollections.observableArrayList();
     String[] oprationtypeitem = {"ايداع", "سحب"};
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         oprationdate.setValue(LocalDate.now());
         ComboBoxFill.fillComboBox(oprationtype, oprationtypeitem);
-        refreshbankaccountTable();
-        getRowData(bankaccountTable);
+        refreshmosqueaccountTable();
+        getRowData(mosqueaccountTable);
     }
 
     @FXML
     private void saveData(ActionEvent event) {
-        String tableName = "bankopration";
+        String tableName = "mosqueopration";
         /*`OPRATIONID`,`OPRATIONDATE`,`OPRATIONTYPE`,`AMOUNT`,`DEPOSITORNAME`,`NOTES`,`BALANCEID`*/
         String fieldName = "`OPRATIONDATE`,`OPRATIONTYPE`,`AMOUNT`,`DEPOSITORNAME`,`NOTES`,`BALANCEID`";
         String[] data = {oprationdate.getValue().toString(), oprationtype.getValue(), amount.getText(), depositorname.getText(), notes.getText(), balanceId};
@@ -94,21 +90,21 @@ public class BankAccountController implements Initializable {
             try {
                 DatabaseAccess.insert(tableName, fieldName, valuenumbers, data);
                 if ("ايداع".equals(oprationtype.getValue())) {
-                    BankAccountModel.incrementBalance(Float.parseFloat(amount.getText()));
+                    MosqueAccountModel.incrementBalance(Float.parseFloat(amount.getText()));
                 } else {
-                    BankAccountModel.decrementBalance(Float.parseFloat(amount.getText()));
+                    MosqueAccountModel.decrementBalance(Float.parseFloat(amount.getText()));
                 }
-                refreshbankaccountTable();
+                refreshmosqueaccountTable();
                 clearData();
             } catch (IOException ex) {
-                Logger.getLogger(RevenuesController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(MosqueAccountModel.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
 
     @FXML
     private void editData(ActionEvent event) {
-        String tableName = "bankopration";
+        String tableName = "mosqueopration";
         String fieldName = "`OPRATIONDATE`=?,`OPRATIONTYPE`=?,`AMOUNT`=?,`DEPOSITORNAME`=?,`NOTES`=?";
         String[] data = {oprationdate.getValue().toString(), oprationtype.getValue(), amount.getText(), depositorname.getText(), notes.getText()};
 
@@ -122,16 +118,16 @@ public class BankAccountController implements Initializable {
             try {
                 DatabaseAccess.updat(tableName, fieldName, data, "OPRATIONID = '" + oprationId + "'");
                 if ("ايداع".equals(oprationtype.getValue())) {
-                    BankAccountModel.decrementBalance(curentAmount);
-                    BankAccountModel.incrementBalance(Float.parseFloat(amount.getText()));
+                    MosqueAccountModel.decrementBalance(curentAmount);
+                    MosqueAccountModel.incrementBalance(Float.parseFloat(amount.getText()));
                 } else {
-                    BankAccountModel.incrementBalance(curentAmount);
-                    BankAccountModel.decrementBalance(Float.parseFloat(amount.getText()));
+                    MosqueAccountModel.incrementBalance(curentAmount);
+                    MosqueAccountModel.decrementBalance(Float.parseFloat(amount.getText()));
                 }
-                refreshbankaccountTable();
+                refreshmosqueaccountTable();
                 clearData();
             } catch (IOException ex) {
-                Logger.getLogger(RevenuesController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(MosqueAccountModel.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -141,47 +137,26 @@ public class BankAccountController implements Initializable {
         try {
             boolean oprationIdStatus = Validation.stringNotNull(oprationId, "اختر السجل من الجدول");
             if (oprationIdStatus) {
-                DatabaseAccess.delete("bankopration", "OPRATIONID = '" + oprationId + "'");
+                DatabaseAccess.delete("mosqueopration", "OPRATIONID = '" + oprationId + "'");
                 if ("ايداع".equals(oprationType)) {
-                    BankAccountModel.decrementBalance(curentAmount);
+                    MosqueAccountModel.decrementBalance(curentAmount);
                 } else {
-                    BankAccountModel.incrementBalance(curentAmount);
+                    MosqueAccountModel.incrementBalance(curentAmount);
                 }
-                refreshbankaccountTable();
+                refreshmosqueaccountTable();
                 clearData();
             }
 
         } catch (IOException ex) {
-            Logger.getLogger(BankAccountController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MosqueAccountModel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    @FXML
-    private void saveInitialBalance(ActionEvent event) {
-        String tableName = "bankaccount";
-        String fieldName = "`INITIALBALANCE`=?";
-        String[] data = {Initialbalance.getText()};
-        
-        boolean InitialbalanceStatus = Validation.textFieldNotEmpty(Initialbalance, "ادخل الرصيد الافتتاحي");
-
-        if (InitialbalanceStatus ) {
-            try {
-                BankAccountModel.decrementBalance(BankAccountModel.getInitialbalance());
-                BankAccountModel.incrementBalance(Float.parseFloat(Initialbalance.getText()));
-                DatabaseAccess.updat(tableName, fieldName, data, "BALANCEID = '" + balanceId + "'");
-                refreshbankaccountTable();
-                Initialbalance.setText("");
-            } catch (IOException ex) {
-                Logger.getLogger(RevenuesController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
-
-    private void bankaccountTableView() {
+    private void mosqueaccountTableView() {
         try {
-            ResultSet rs = DatabaseAccess.select("bankopration", "BALANCEID = '" + balanceId + "'");
+            ResultSet rs = DatabaseAccess.select("mosqueopration", "BALANCEID = '" + balanceId + "'");
             while (rs.next()) {
-                banklist.add(new BankAccountModel(
+                moaquelist.add(new MosqueAccountModel(
                         rs.getString("OPRATIONID"),
                         rs.getString("OPRATIONDATE"),
                         rs.getString("OPRATIONTYPE"),
@@ -201,17 +176,16 @@ public class BankAccountController implements Initializable {
         depositorname_col.setCellValueFactory(new PropertyValueFactory<>("depositorname"));
         notes_col.setCellValueFactory(new PropertyValueFactory<>("notes"));
 
-        totalcost.setText(Float.toString(BankAccountModel.getTotalcost()));
-        initialbalanceview.setText(Float.toString(BankAccountModel.getInitialbalance()));
-        totalpaymanet.setText(Float.toString(BankAccountModel.getTotalpaymanet()));
-        totalbalance.setText(Float.toString(BankAccountModel.getTotalbalance()));
+        totalcost.setText(Float.toString(MosqueAccountModel.getTotalcost()));
+        totalpaymanet.setText(Float.toString(MosqueAccountModel.getTotalpaymanet()));
+        totalbalance.setText(Float.toString(MosqueAccountModel.getTotalbalance()));
 
-        bankaccountTable.setItems(banklist);
+        mosqueaccountTable.setItems(moaquelist);
     }
 
-    private void refreshbankaccountTable() {
-        banklist.clear();
-        bankaccountTableView();
+    private void refreshmosqueaccountTable() {
+        moaquelist.clear();
+        mosqueaccountTableView();
     }
 
     private void clearData() {
@@ -226,7 +200,7 @@ public class BankAccountController implements Initializable {
         table.setOnMouseClicked(new EventHandler() {
             @Override
             public void handle(Event event) {
-                ObservableList<BankAccountModel> list = FXCollections.observableArrayList();
+                ObservableList<MosqueAccountModel> list = FXCollections.observableArrayList();
                 list = table.getSelectionModel().getSelectedItems();
                 if (list.isEmpty()) {
                     Validation.showAlert("", "لاتوجد بيانات");
@@ -243,4 +217,5 @@ public class BankAccountController implements Initializable {
             }
         });
     }
+
 }

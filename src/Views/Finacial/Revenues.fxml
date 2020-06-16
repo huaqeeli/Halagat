@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1200.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlleres.RevenuesController">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1200.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlleres.RevenuesController">
     <stylesheets>
         <URL value="@/Css/financial.css" />
     </stylesheets>
@@ -20,7 +26,7 @@
                   <HBox prefHeight="40.0" prefWidth="550.0">
                      <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="التاريخ :" />
-                        <DatePicker fx:id="revenuesdata" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" styleClass="textStyle" stylesheets="@../../Css/pagStyle.css" HBox.hgrow="ALWAYS" />
+                        <JFXDatePicker fx:id="revenuesdata" defaultColor="#4fa496" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="250.0" styleClass="date" stylesheets="@../../Css/pagStyle.css" HBox.hgrow="ALWAYS" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="5.0" />
@@ -80,15 +86,6 @@
                         <Insets bottom="5.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox layoutX="10.0" layoutY="190.0" prefHeight="40.0" prefWidth="550.0">
-                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="نوع الحساب :" />
-                        <ComboBox fx:id="accounttype" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="300.0" styleClass="textStyle" stylesheets="@../../Css/pagStyle.css" HBox.hgrow="ALWAYS" />
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin>
-                  </HBox>
                   <Separator prefHeight="8.0" prefWidth="500.0" style="-fx-background-color: #3C3B3B;">
                      <VBox.margin>
                         <Insets bottom="5.0" />
@@ -121,18 +118,31 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="450.0" prefWidth="300.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label alignment="CENTER" prefHeight="53.0" prefWidth="300.0" styleClass="balanceLable" stylesheets="@../../Css/financial.css" text="الرصيد المرحل من العام الماضي" VBox.vgrow="ALWAYS" />
-                              <Label fx:id="carryoverbalance" alignment="CENTER" prefHeight="200.0" prefWidth="300.0" styleClass="previousBalance" stylesheets="@../../Css/financial.css" text="0" VBox.vgrow="ALWAYS">
+                              <Label alignment="CENTER" prefHeight="53.0" prefWidth="300.0" styleClass="balanceLable" stylesheets="@../../Css/financial.css" text="الرصيد المرحل " VBox.vgrow="ALWAYS" />
+                              <Label fx:id="carryoverbalance" alignment="CENTER" prefHeight="200.0" prefWidth="300.0" styleClass="loanBalance" stylesheets="@../../Css/financial.css" text="0" VBox.vgrow="ALWAYS">
                                  <VBox.margin>
                                     <Insets top="5.0" />
                                  </VBox.margin>
                               </Label>
                            </children>
                         </VBox>
+                        <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="450.0" prefWidth="300.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="53.0" prefWidth="300.0" styleClass="balanceLable" stylesheets="@../../Css/financial.css" text="اجمالي الايرادات" VBox.vgrow="ALWAYS" />
+                              <Label fx:id="totalRevenues" alignment="CENTER" prefHeight="200.0" prefWidth="300.0" styleClass="loanBalance" stylesheets="@../../Css/financial.css" text="0" VBox.vgrow="ALWAYS">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="15.0" />
+                           </HBox.margin>
+                        </VBox>
                         <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="450.0" prefWidth="300.0" HBox.hgrow="ALWAYS">
                            <children>
                               <Label alignment="CENTER" prefHeight="53.0" prefWidth="300.0" styleClass="balanceLable" stylesheets="@../../Css/financial.css" text="اجمالي الرصيد الحالي " VBox.vgrow="ALWAYS" />
-                              <Label fx:id="totalbalance" alignment="CENTER" prefHeight="200.0" prefWidth="300.0" styleClass="lastBalance" stylesheets="@../../Css/financial.css" text="0" VBox.vgrow="ALWAYS">
+                              <Label fx:id="totalbalance" alignment="CENTER" prefHeight="200.0" prefWidth="300.0" styleClass="loanBalance" stylesheets="@../../Css/financial.css" text="0" VBox.vgrow="ALWAYS">
                                  <VBox.margin>
                                     <Insets top="5.0" />
                                  </VBox.margin>
@@ -159,7 +169,6 @@
                   <TableColumn fx:id="clause_col" minWidth="80.0" prefWidth="75.0" text="البند" />
                   <TableColumn fx:id="amount_col" prefWidth="75.0" text="المبلغ" />
                   <TableColumn fx:id="from_col" minWidth="150.0" prefWidth="75.0" text="ايراد من " />
-                  <TableColumn fx:id="accounttype_col" prefWidth="75.0" text="نوع الحساب" />
                </columns>
             </TableView>
          </children>

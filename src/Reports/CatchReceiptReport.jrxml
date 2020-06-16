@@ -2,7 +2,6 @@
 <!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CatchReceiptReport" pageWidth="595" pageHeight="425" columnWidth="591" leftMargin="2" rightMargin="2" topMargin="2" bottomMargin="2" uuid="72324917-2587-440f-a6f8-adbc6579f057">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="NewDataAdapter.xml"/>
-	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<parameter name="revenuedId" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT halagatdb.logofile.`logoImage`,
@@ -12,14 +11,14 @@
 	halagatdb.revenues.`AMOUNT`,
 	halagatdb.revenues.`FROM`,
 	halagatdb.revenues.`ACCOUNTTYPE`,
-	halagatdb.revenues.`FISCALYEAR`,
-	halagatdb.revenues.AMOUNTTEXT,
+	halagatdb.revenues.`AMOUNTTEXT`,
 	halagatdb.revenues.`CASHORCHEQUENO`,
 	halagatdb.revenues.`BANKNAME`,
 	halagatdb.logofile.`whterLogo`
 FROM halagatdb.revenues,
 	halagatdb.logofile
-	where halagatdb.revenues.`REVENUESID` =  $P{revenuedId}]]>
+WHERE 
+	 halagatdb.revenues.`REVENUESID` = $P{revenuedId}]]>
 	</queryString>
 	<field name="logoImage" class="java.awt.Image">
 		<property name="com.jaspersoft.studio.field.label" value="logoImage"/>
@@ -47,10 +46,6 @@ FROM halagatdb.revenues,
 	</field>
 	<field name="ACCOUNTTYPE" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="ACCOUNTTYPE"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="revenues"/>
-	</field>
-	<field name="FISCALYEAR" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="FISCALYEAR"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="revenues"/>
 	</field>
 	<field name="AMOUNTTEXT" class="java.lang.String">
@@ -81,7 +76,7 @@ FROM halagatdb.revenues,
 	<title>
 		<band height="92" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="26" width="100" height="20" uuid="305d72a7-e377-4b12-a362-66eb1158d0f8">
+				<reportElement x="0" y="28" width="100" height="20" uuid="305d72a7-e377-4b12-a362-66eb1158d0f8">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
@@ -90,7 +85,7 @@ FROM halagatdb.revenues,
 				<textFieldExpression><![CDATA[$F{REVENUESDATE}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="100" y="26" width="42" height="20" uuid="f2da3f07-456e-4245-b9c8-6a03fa47e333">
+				<reportElement x="100" y="28" width="42" height="20" uuid="f2da3f07-456e-4245-b9c8-6a03fa47e333">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -158,14 +153,14 @@ FROM halagatdb.revenues,
 				<text><![CDATA[تصريح رقم (21/1/10)]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="6" width="100" height="20" uuid="ccddb741-eb27-4524-b858-049b0db26488">
+				<reportElement x="0" y="8" width="100" height="20" uuid="ccddb741-eb27-4524-b858-049b0db26488">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{REVENUESID}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="100" y="6" width="42" height="20" uuid="2cc8cacd-ad0c-423d-8810-e166ac6e4240">
+				<reportElement x="100" y="8" width="42" height="20" uuid="2cc8cacd-ad0c-423d-8810-e166ac6e4240">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">

@@ -2,7 +2,6 @@ package Controlleres;
 
 import Messages.Controllers.ShowMessage;
 import Models.RevenuesModel;
-import Models.StudentModel;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -21,19 +20,15 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.util.Callback;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -60,11 +55,11 @@ public class RevenuesController implements Initializable {
     @FXML
     private TextField bankName;
     @FXML
-    private ComboBox<String> accounttype;
-    @FXML
     private Label carryoverbalance;
     @FXML
     private Label totalbalance;
+    @FXML
+    private Label totalRevenues;
     @FXML
     private TableView<RevenuesModel> revenuesTable;
     @FXML
@@ -76,25 +71,22 @@ public class RevenuesController implements Initializable {
     @FXML
     private TableColumn<?, ?> from_col;
     @FXML
-    private TableColumn<?, ?> accounttype_col;
-    @FXML
     private TableColumn<?, ?> revenuesid_col;
-    @FXML
-    private TableColumn<RevenuesModel, String> print_col;
 
     ObservableList<RevenuesModel> revenueslist = FXCollections.observableArrayList();
-    String[] clauseitem = {"فاعل خير", "الداعم الرئيسي", "رسوم الطلاب", "ايرادات مسجد", "بنك البلاد"};
+    String[] clauseitem = {"فاعل خير", "الداعم الرئيسي", "رسوم الطلاب", "ايرادات مسجد", "بنك البلاد", "تسديد عهدة"};
     String[] accounttypeitem = {"حساب الحلقات", "حساب المسجد"};
     Image img = new Image(getClass().getResourceAsStream("/Images/print.png"));
     float tableAmount = 0;
     String revenuedId = null;
+    String balanceId = null;
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        refreshStudentTable();
+        refreshRevenuesTable();
         revenuesdata.setValue(LocalDate.now());
         ComboBoxFill.fillComboBox(clause, clauseitem);
-        ComboBoxFill.fillComboBox(accounttype, accounttypeitem);
         getRowData(revenuesTable);
     }
     /*`REVENUESID`,`REVENUESDATE`,`CLAUSE`,`INVOICENUMBER`,`AMOUNT`,`FROM`,`ACCOUNTTYPE*/
@@ -102,7 +94,7 @@ public class RevenuesController implements Initializable {
     @FXML
     private void saveDate(MouseEvent event) {
         String tableName = "revenues";
-        String year = Integer.toString(HijriCalendar.getSimpleYear());
+        balanceId = BalanceController.getBalanceId();
         String bankNameText = null;
         if (bankName.getText() == null) {
             bankNameText = "ـــــ";
@@ -110,9 +102,9 @@ public class RevenuesController implements Initializable {
             bankNameText = bankName.getText();
         }
 
-        String fieldName = "`REVENUESDATE`,`CLAUSE`,`AMOUNT`,`FROM`,`ACCOUNTTYPE`,`FISCALYEAR`,`AMOUNTTEXT`,`CASHORCHEQUENO`,`BANKNAME`";
-        String[] data = {revenuesdata.getValue().toString(), clause.getValue(), amount.getText(), from.getText(), accounttype.getValue(), year, amountText.getText(), cashOrCheque.getText(), bankNameText};
-        String valuenumbers = "?,?,?,?,?,?,?,?,?";
+        String fieldName = "`REVENUESDATE`,`CLAUSE`,`AMOUNT`,`FROM`,`BALANCEID`,`AMOUNTTEXT`,`CASHORCHEQUENO`,`BANKNAME`";
+        String[] data = {revenuesdata.getValue().toString(), clause.getValue(), amount.getText(), from.getText(),  balanceId, amountText.getText(), cashOrCheque.getText(), bankNameText};
+        String valuenumbers = "?,?,?,?,?,?,?,?";
 
         boolean revenuesdataStatus = Validation.datePickerNotEmpty(revenuesdata, "ادخل التاريخ");
         boolean clauseStatus = Validation.comboBoxNotEmpty(clause, "ادخل البند");
@@ -121,13 +113,12 @@ public class RevenuesController implements Initializable {
         boolean fromStatus = Validation.textFieldNotEmpty(from, "ادخل الايراد من ");
         boolean amountTextStatus = Validation.textFieldNotEmpty(amountText, "ادخل الايراد من ");
         boolean cashOrChequeStatus = Validation.textFieldNotEmpty(cashOrCheque, "ادخل نقدا ار رقم الشيك ");
-        boolean accounttypeStatus = Validation.comboBoxNotEmpty(accounttype, "اختر نوع الحساب");
 
-        if (revenuesdataStatus && clauseStatus && amountStatus && amountNumberOnle && fromStatus && accounttypeStatus && amountTextStatus && cashOrChequeStatus) {
+        if (revenuesdataStatus && clauseStatus && amountStatus && amountNumberOnle && fromStatus  && amountTextStatus && cashOrChequeStatus) {
             try {
                 DatabaseAccess.insert(tableName, fieldName, valuenumbers, data);
                 BalanceController.incrementBalance(Float.parseFloat(amount.getText()));
-                refreshStudentTable();
+                refreshRevenuesTable();
                 clearData();
             } catch (IOException ex) {
                 Logger.getLogger(RevenuesController.class.getName()).log(Level.SEVERE, null, ex);
@@ -145,8 +136,8 @@ public class RevenuesController implements Initializable {
         } else {
             bankNameText = bankName.getText();
         }
-        String fieldName = "`REVENUESDATE`=?,`CLAUSE`=?,`AMOUNT`=?,`FROM`=?,`ACCOUNTTYPE`=?,`AMOUNTTEXT`=?,`CASHORCHEQUENO`=?,`BANKNAME`=?";
-        String[] data = {revenuesdata.getValue().toString(), clause.getValue(), amount.getText(), from.getText(), accounttype.getValue(), amountText.getText(), cashOrCheque.getText(), bankNameText};
+        String fieldName = "`REVENUESDATE`=?,`CLAUSE`=?,`AMOUNT`=?,`FROM`=?,`AMOUNTTEXT`=?,`CASHORCHEQUENO`=?,`BANKNAME`=?";
+        String[] data = {revenuesdata.getValue().toString(), clause.getValue(), amount.getText(), from.getText(), amountText.getText(), cashOrCheque.getText(), bankNameText};
 
         boolean revenuesdataStatus = Validation.datePickerNotEmpty(revenuesdata, "ادخل التاريخ");
         boolean clauseStatus = Validation.comboBoxNotEmpty(clause, "ادخل البند");
@@ -155,14 +146,13 @@ public class RevenuesController implements Initializable {
         boolean fromStatus = Validation.textFieldNotEmpty(from, "ادخل الايراد من ");
         boolean amountTextStatus = Validation.textFieldNotEmpty(amountText, "ادخل الايراد من ");
         boolean cashOrChequeStatus = Validation.textFieldNotEmpty(cashOrCheque, "ادخل نقدا ار رقم الشيك ");
-        boolean accounttypeStatus = Validation.comboBoxNotEmpty(accounttype, "اختر نوع الحساب");
 
-        if (revenuesdataStatus && clauseStatus && amountStatus && amountNumberOnle && fromStatus && accounttypeStatus && amountTextStatus && cashOrChequeStatus) {
+        if (revenuesdataStatus && clauseStatus && amountStatus && amountNumberOnle && fromStatus  && amountTextStatus && cashOrChequeStatus) {
             try {
                 DatabaseAccess.updat(tableName, fieldName, data, "REVENUESID='" + revenuedId + "'");
                 BalanceController.decrementBalance(tableAmount);
                 BalanceController.incrementBalance(Float.parseFloat(amount.getText()));
-                refreshStudentTable();
+                refreshRevenuesTable();
                 clearData();
             } catch (IOException ex) {
                 Logger.getLogger(RevenuesController.class.getName()).log(Level.SEVERE, null, ex);
@@ -176,7 +166,7 @@ public class RevenuesController implements Initializable {
             String tableName = "revenues";
             DatabaseAccess.delete(tableName, "REVENUESID='" + revenuedId + "'");
             BalanceController.decrementBalance(tableAmount);
-            refreshStudentTable();
+            refreshRevenuesTable();
             clearData();
         } catch (IOException ex) {
             Logger.getLogger(RevenuesController.class.getName()).log(Level.SEVERE, null, ex);
@@ -185,17 +175,15 @@ public class RevenuesController implements Initializable {
 
     private void revenuesTableView() {
         try {
-            ResultSet rs = DatabaseAccess.select("revenues");
-            int sequence = 0;
+            balanceId = BalanceController.getBalanceId();
+            ResultSet rs = DatabaseAccess.select("revenues", "BALANCEID = '" + balanceId + "'");
             while (rs.next()) {
-                sequence++;
                 revenueslist.add(new RevenuesModel(
                         rs.getString("REVENUESID"),
                         rs.getString("REVENUESDATE"),
                         rs.getString("CLAUSE"),
                         rs.getString("AMOUNT"),
-                        rs.getString("FROM"),
-                        rs.getString("ACCOUNTTYPE")
+                        rs.getString("FROM")
                 ));
             }
             rs.close();
@@ -207,62 +195,15 @@ public class RevenuesController implements Initializable {
         clause_col.setCellValueFactory(new PropertyValueFactory<>("clause"));
         amount_col.setCellValueFactory(new PropertyValueFactory<>("amount"));
         from_col.setCellValueFactory(new PropertyValueFactory<>("from"));
-        accounttype_col.setCellValueFactory(new PropertyValueFactory<>("accounttype"));
-//        Callback<TableColumn<RevenuesModel, String>, TableCell<RevenuesModel, String>> cellFactory
-//                = new Callback<TableColumn<RevenuesModel, String>, TableCell<RevenuesModel, String>>() {
-//                    @Override
-//                    public TableCell call(final TableColumn<RevenuesModel, String> param) {
-//                        final TableCell<RevenuesModel, String> cell = new TableCell<RevenuesModel, String>() {
-//
-//                            final Button btn = new Button("اطبع سند قيض", new ImageView(img));
-//
-//                            @Override
-//                            public void updateItem(String item, boolean empty) {
-//                                super.updateItem(item, empty);
-//                                if (empty) {
-//                                    setGraphic(null);
-//                                    setText(null);
-//                                } else {
-//                                    btn.setOnAction(event -> {
-//                                        try {
-//                                            String reportSrcFile = "C:\\Users\\ابو ريان\\Documents\\Halagat\\src\\Reports\\CatchReceiptReport.jrxml";
-//                                            Connection con = DatabaseConnector.dbConnector();
-//
-//                                            JasperDesign jasperReport = JRXmlLoader.load(reportSrcFile);
-//                                            Map parameters = new HashMap();
-//                                            parameters.put("revenuedId", revenuedId);
-//
-//                                            JasperReport jrr = JasperCompileManager.compileReport(jasperReport);
-//                                            JasperPrint print = JasperFillManager.fillReport(jrr, parameters, con);
-//                                            JasperViewer.viewReport(print, false);
-//                                        } catch (JRException | IOException ex) {
-//                                            Logger.getLogger(StudentIdentityController.class.getName()).log(Level.SEVERE, null, ex);
-//                                        }
-//
-//                                    });
-//                                    btn.setStyle("-fx-font-family: 'URW DIN Arabic';"
-//                                            + "    -fx-font-size: 10px;"
-//                                            + "    -fx-background-color: #32BFF0;"
-//                                            + "    -fx-background-radius: 20;"
-//                                            + "    -fx-text-fill: #FFFFFF;"
-//                                            + "    -fx-effect: dropshadow(three-pass-box,#3C3B3B, 20, 0, 5, 5); ");
-//                                    setGraphic(btn);
-//                                    setText(null);
-//                                }
-//                            }
-//                        };
-//                        return cell;
-//                    }
-//                };
-
+        
         totalbalance.setText(Float.toString(BalanceController.getTotalBalance()));
         carryoverbalance.setText(Float.toString(BalanceController.getCarryoverBalance()));
-
-//        print_col.setCellFactory(cellFactory);
+        totalRevenues.setText(Float.toString(BalanceController.getTotalRevenues()));
+        
         revenuesTable.setItems(revenueslist);
     }
 
-    private void refreshStudentTable() {
+    private void refreshRevenuesTable() {
         revenueslist.clear();
         revenuesTableView();
     }
@@ -272,13 +213,12 @@ public class RevenuesController implements Initializable {
         from.setText("");
         revenuesdata.setValue(LocalDate.now());
         clause.setValue("");
-        accounttype.setValue("");
         amountText.setText("");
         cashOrCheque.setText("");
         bankName.setText("");
     }
 
-    private void getRowData(TableView table) {
+    private void getRowData(TableView table ) {
         table.setOnMouseClicked(new EventHandler() {
             @Override
             public void handle(Event event) {
@@ -293,7 +233,6 @@ public class RevenuesController implements Initializable {
                         clause.setValue(list.get(0).getClause());
                         amount.setText(list.get(0).getAmount());
                         from.setText(list.get(0).getFrom());
-                        accounttype.setValue(list.get(0).getAccounttype());
                         tableAmount = Float.parseFloat(list.get(0).getAmount());
                         revenuedId = list.get(0).getRevenuesid();
                         if (rs.next()) {

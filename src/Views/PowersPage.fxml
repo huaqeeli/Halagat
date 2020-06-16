@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="387.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlleres.PowersPageController">
+   <children>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="76.0" prefWidth="500.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="200.0" styleClass="powerheader" stylesheets="@../Css/pagStyle.css" text="رقم الموظف">
+               <HBox.margin>
+                  <Insets left="10.0" right="2.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <Label fx:id="userId" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="15.0" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="100.0" styleClass="powerheader" stylesheets="@../Css/pagStyle.css">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="67.0" prefHeight="40.0" prefWidth="200.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="240.0" styleClass="powerheader" stylesheets="@../Css/pagStyle.css" text="الصلاحيات" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets left="10.0" right="2.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="15.0" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="25.0" styleClass="powerheader" stylesheets="@../Css/pagStyle.css" text="الحالة" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="240.0" styleClass="powerLabel" stylesheets="@../Css/pagStyle.css" text="القبول والتسجيل" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets left="10.0" right="2.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <CheckBox fx:id="admissionPower" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="30.0" prefWidth="20.0" styleClass="powerLabel" stylesheets="@../Css/pagStyle.css" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </CheckBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="185.0" prefHeight="40.0" prefWidth="200.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="240.0" styleClass="powerLabel" stylesheets="@../Css/pagStyle.css" text="الشؤون الادارية والمالية" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets left="10.0" right="2.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <CheckBox fx:id="finacialPower" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="30.0" prefWidth="20.0" styleClass="powerLabel" stylesheets="@../Css/pagStyle.css" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </CheckBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="210.0" prefHeight="40.0" prefWidth="200.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="240.0" styleClass="powerLabel" stylesheets="@../Css/pagStyle.css" text="الشؤون التعلمية" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets left="10.0" right="2.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <CheckBox fx:id="educationPower" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="30.0" prefWidth="20.0" styleClass="powerLabel" stylesheets="@../Css/pagStyle.css" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </CheckBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="235.0" prefHeight="40.0" prefWidth="200.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="240.0" styleClass="powerLabel" stylesheets="@../Css/pagStyle.css" text="ادارة المستخدمين" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets left="10.0" right="2.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <CheckBox fx:id="userMangPower" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="30.0" prefWidth="20.0" styleClass="powerLabel" stylesheets="@../Css/pagStyle.css" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </CheckBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="272.0" prefHeight="40.0" prefWidth="200.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="240.0" styleClass="powerLabel" stylesheets="@../Css/pagStyle.css" text="مسؤول النظام" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets left="10.0" right="2.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <CheckBox fx:id="adminPower" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="30.0" prefWidth="20.0" styleClass="powerLabel" stylesheets="@../Css/pagStyle.css" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </CheckBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="227.0" prefHeight="40.0" prefWidth="200.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#savePowr" prefHeight="30.0" prefWidth="150.0" styleClass="pageButtonStyle" stylesheets="@../Css/pagStyle.css" text="حفظ">
+               <HBox.margin>
+                  <Insets right="2.0" />
+               </HBox.margin>
+            </Button>
+            <Button layoutX="188.0" layoutY="23.0" mnemonicParsing="false" onAction="#editPower" prefHeight="30.0" prefWidth="150.0" styleClass="pageButtonStyle" stylesheets="@../Css/pagStyle.css" text="حذف">
+               <HBox.margin>
+                  <Insets right="2.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets top="20.0" />
+         </VBox.margin>
+      </HBox>
+   </children>
+</VBox>

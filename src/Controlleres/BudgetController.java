@@ -1,7 +1,8 @@
 package Controlleres;
 
+import Messages.Controllers.ShowMessage;
 import Models.BalanceModel;
-import Models.StudentModel;
+import com.jfoenix.controls.JFXDatePicker;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -40,27 +41,34 @@ public class BudgetController implements Initializable {
     private TableColumn<?, ?> totalbalane_col;
     ObservableList<BalanceModel> balancelist = FXCollections.observableArrayList();
     String year = null;
+    String userId = null;
+    @FXML
+    private JFXDatePicker startDate;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        refreshStudentTable();
+        refreshbalanceTable();
         getRowData(balance);
+        startDate.setValue(LocalDate.now());
+//        startDate.setChronology(HijrahChronology.INSTANCE);
+
     }
     /*`FISCALYEARNAME`,`FISCALYEAR`,`CURRENTBALANCE`,`CARRYOVERBALANCE`,`TOTALBALANCE`*/
 
     @FXML
     private void creatAccount(ActionEvent event) {
         String tableName = "balance";
-        String fiscalYear = Integer.toString(HijriCalendar.getSimpleYear());
-        String fieldName = "`FISCALYEARNAME`,`FISCALYEAR`";
-        String[] data = {fiscalyearname.getText(), fiscalYear};
+        String fieldName = "`FISCALYEARNAME`,`FISCALYEARSTARTDATE`";
+        String[] data = {fiscalyearname.getText(), startDate.getValue().toString()};
         String valuenumbers = "?,?";
-        boolean existing = BalanceController.isBalanceExisting("تم انشاء حساب للسنة المالية الحالية");
+        boolean existing = BalanceController.isBalanceExisting("يجب اغلاق الحساب الحالي قبل انشاء الحساب");
         boolean fiscalyearnameStatus = Validation.textFieldNotEmpty(fiscalyearname, "ادخل مسمى السنة المالية");
         if (existing && fiscalyearnameStatus) {
             try {
-                DatabaseAccess.insert(tableName, fieldName, valuenumbers, data);
-                refreshStudentTable();
+                int lastid = DatabaseAccess.insert(tableName, fieldName, valuenumbers, data);
+                String[] data2 = {Integer.toString(lastid)};
+                DatabaseAccess.insert("bankaccount", "`BALANCEID`", "?", data2);
+                refreshbalanceTable();
             } catch (IOException ex) {
                 Logger.getLogger(BudgetController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -68,20 +76,30 @@ public class BudgetController implements Initializable {
     }
 
     @FXML
-    private void closeYearBudgetAccount(ActionEvent event) {
+    private void closeYearBudgetAccount(ActionEvent event) throws IOException {
+        if (UserPowersController.getPower(userId, "105")) {
+            boolean existing = BalanceController.isNewBalanceExisting("لا يوجد حساب جديد الرجاء انشاء حساب");
+            if (existing) {
+                BalanceController.closeBalance();
+                refreshbalanceTable();
+            }
+        } else {
+            ShowMessage showMessage = new ShowMessage();
+            showMessage.error("ليس لديك صلاحية لاغلاق الحساب");
+        }
     }
 
     @FXML
     private void editData(ActionEvent event) {
         String tableName = "balance";
-        String fieldName = "`FISCALYEARNAME`=?";
-        String[] data = {fiscalyearname.getText()};
+        String fieldName = "`FISCALYEARNAME`=?,`FISCALYEARSTARTDATE`=?";
+        String[] data = {fiscalyearname.getText(), startDate.getValue().toString()};
         boolean fiscalyearnameStatus = Validation.textFieldNotEmpty(fiscalyearname, "ادخل مسمى السنة المالية");
-       
+
         if (fiscalyearnameStatus) {
             try {
-                DatabaseAccess.updat(tableName, fieldName,data,"FISCALYEAR = '"+year+"'");
-                refreshStudentTable();
+                DatabaseAccess.updat(tableName, fieldName, data, "STATUSE ='opened'");
+                refreshbalanceTable();
             } catch (IOException ex) {
                 Logger.getLogger(BudgetController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -95,7 +113,7 @@ public class BudgetController implements Initializable {
             while (rs.next()) {
                 balancelist.add(new BalanceModel(
                         rs.getString("FISCALYEARNAME"),
-                        rs.getString("FISCALYEAR"),
+                        rs.getString("FISCALYEARSTARTDATE"),
                         rs.getInt("CURRENTBALANCE"),
                         rs.getInt("CARRYOVERBALANCE"),
                         rs.getInt("TOTALBALANCE")
@@ -115,7 +133,7 @@ public class BudgetController implements Initializable {
         balance.setItems(balancelist);
     }
 
-    private void refreshStudentTable() {
+    private void refreshbalanceTable() {
         balancelist.clear();
         balanceTableView();
     }
@@ -142,6 +160,10 @@ public class BudgetController implements Initializable {
 //        revenuesdata.setValue(LocalDate.now());
 //        clause.setValue("");
 //        accounttype.setValue("");
+    }
+
+    public void setUserId(String userid) {
+        this.userId = userid;
     }
 
 }

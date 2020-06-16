@@ -41,11 +41,11 @@ public class Validation {
 
         return state;
     }
-    
+
     public static boolean loginTextFieldNotEmpty(TextField t, String validationmassage) {
         boolean state = true;
         if (!textFieldNotEmpty(t)) {
-            state = false; 
+            state = false;
             t.setStyle(" -fx-border-color: #DD4F43;");
             t.setPromptText(validationmassage);
         } else {
@@ -198,6 +198,7 @@ public class Validation {
         }
         return state;
     }
+
     public static boolean ifexisting(String tapleName, String fildName, String condition, String validationmassage) throws IOException {
         boolean state = true;
         try {
@@ -210,6 +211,51 @@ public class Validation {
                 state = false;
                 ShowMessage showMessage = new ShowMessage();
                 showMessage.error(validationmassage);
+            }
+            con.close();
+            psm.close();
+            rs.close();
+        } catch (IOException | SQLException ex) {
+            ShowMessage showMessage = new ShowMessage();
+            showMessage.error(ex.toString());
+        }
+        return state;
+    }
+
+    public static boolean isMatching(String tapleName, String fildName, String condition, String validationmassage) throws IOException {
+        boolean state = false;
+        try {
+            ResultSet rs = null;
+            String guiry = "SELECT " + " " + fildName + " " + " FROM " + " " + tapleName + " " + " WHERE" + " " + condition;
+            Connection con = DatabaseConnector.dbConnector();
+            PreparedStatement psm = con.prepareStatement(guiry);
+            rs = psm.executeQuery();
+            if (rs.next()) {
+                state = true;
+            } else {
+                ShowMessage showMessage = new ShowMessage();
+                showMessage.error(validationmassage);
+            }
+            con.close();
+            psm.close();
+            rs.close();
+        } catch (IOException | SQLException ex) {
+            ShowMessage showMessage = new ShowMessage();
+            showMessage.error(ex.toString());
+        }
+        return state;
+    }
+
+    public static boolean ifexisting(String tapleName, String fildName, String condition) throws IOException {
+        boolean state = true;
+        try {
+            ResultSet rs = null;
+            String guiry = "SELECT " + " " + fildName + " " + " FROM " + " " + tapleName + " " + " WHERE" + " " + condition;
+            Connection con = DatabaseConnector.dbConnector();
+            PreparedStatement psm = con.prepareStatement(guiry);
+            rs = psm.executeQuery();
+            if (rs.next()) {
+                state = false;
             }
             con.close();
             psm.close();

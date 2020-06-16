@@ -1,5 +1,6 @@
 package Controlleres;
 
+import Messages.Controllers.ShowMessage;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition;
@@ -30,32 +31,68 @@ public class MainPageController implements Initializable {
     private JFXDrawer drawer;
     @FXML
     private Label userNameLabel;
+    String userid = null;
+    boolean logOut = false;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            loding.lodPage("/Views/HomePage", mainContent);
             HBox hbox = FXMLLoader.load(getClass().getResource("/Views/ToolBar.fxml"));
             drawer.setSidePane(hbox);
-
             for (Node node : hbox.getChildren()) {
                 if (node.getAccessibleText() != null) {
                     node.addEventHandler(MouseEvent.MOUSE_CLICKED, (e) -> {
                         switch (node.getAccessibleText()) {
                             case "homPage":
-                                loding.lodPage("/Views/HomePage", mainContent);
+                                loding.lodHomePage(mainContent, userid);
                                 break;
                             case "admissionPage":
-                                loding.lodPage("/Views/AdmissionPage", mainContent);
+                                try {
+                                    if (UserPowersController.getPower(userid, "101") || UserPowersController.getPower(userid, "105")) {
+                                        loding.lodPage("/Views/AdmissionPage", mainContent);
+                                    } else {
+                                        ShowMessage showMessage = new ShowMessage();
+                                        showMessage.error("ليس لديك صلاحية الدخول الى صفحة القبول والتسجيل");
+                                    }
+                                } catch (IOException ex) {
+                                    Logger.getLogger(MainPageController.class.getName()).log(Level.SEVERE, null, ex);
+                                }
                                 break;
                             case "financialPage":
-                                loding.lodPage("/Views/Financial", mainContent);
+                                try {
+                                    if (UserPowersController.getPower(userid, "102") || UserPowersController.getPower(userid, "105")) {
+                                        loding.lodFinancialPage(mainContent, userid);
+                                    } else {
+                                        ShowMessage showMessage = new ShowMessage();
+                                        showMessage.error("ليس لديك صلاحية الدخول الى صفحة الشؤون المالية والادارية");
+                                    }
+                                } catch (IOException ex) {
+                                    Logger.getLogger(MainPageController.class.getName()).log(Level.SEVERE, null, ex);
+                                }
                                 break;
                             case "teachersLoginPage":
-                                loding.lodPage("/Views/EducationAffairs", mainContent);
+                                try {
+                                    if (UserPowersController.getPower(userid, "103") || UserPowersController.getPower(userid, "105")) {
+                                        loding.lodPage("/Views/EducationAffairs", mainContent);
+                                    } else {
+                                        ShowMessage showMessage = new ShowMessage();
+                                        showMessage.error("ليس لديك صلاحية الدخول الى صفحة الشؤون التعلمية");
+                                    }
+                                } catch (IOException ex) {
+                                    Logger.getLogger(MainPageController.class.getName()).log(Level.SEVERE, null, ex);
+                                }
                                 break;
                             case "usersPage":
-                                loding.lodPage("/Views/UsersPage", mainContent);
+                                try {
+                                    if (UserPowersController.getPower(userid, "104") || UserPowersController.getPower(userid, "105")) {
+                                        loding.lodPage("/Views/UsersPage", mainContent);
+                                    } else {
+                                        ShowMessage showMessage = new ShowMessage();
+                                        showMessage.error("ليس لديك صلاحية الدخول الى صفحة ادارة المستخدمين ");
+                                    }
+                                } catch (IOException ex) {
+                                    Logger.getLogger(MainPageController.class.getName()).log(Level.SEVERE, null, ex);
+                                }
                                 break;
                         }
                     });
@@ -86,27 +123,7 @@ public class MainPageController implements Initializable {
 
     @FXML
     private void homePageOpen(MouseEvent event) {
-        loding.lodPage("/Views/HomePage", mainContent);
-    }
-
-    @FXML
-    private void admissionPageOpen(ActionEvent event) {
-        loding.lodPage("/Views/AdmissionPage", mainContent);
-    }
-
-    @FXML
-    private void usersPageOpen(ActionEvent event) {
-        loding.lodPage("/Views/UsersPage", mainContent);
-    }
-
-    @FXML
-    private void teachersLoginPageOpen(ActionEvent event) {
-        loding.lodPage("/Views/TeachersLogin", mainContent);
-    }
-
-    @FXML
-    private void FinancialPageOpen(ActionEvent event) {
-        loding.lodPage("/Views/Financial", mainContent);
+        loding.lodHomePage(mainContent, userid);
     }
 
     private void fullScreen(MouseEvent event) {
@@ -121,9 +138,19 @@ public class MainPageController implements Initializable {
 
     @FXML
     private void logout(ActionEvent event) {
+        try {
+            close();
+            LoginPageController login = new LoginPageController();
+            login.lodLogingPage();
+            logOut = true;
+        } catch (IOException ex) {
+            Logger.getLogger(MainPageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-    public void setUserName(String username) {
+    public void setUserName(String username, String userid) {
         this.userNameLabel.setText(username);
+        this.userid = userid;
+        loding.lodHomePage(mainContent, userid);
     }
 }

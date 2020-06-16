@@ -20,13 +20,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.InputEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Screen;
@@ -43,6 +41,7 @@ public class LoginPageController implements Initializable {
     private AnchorPane content;
     LodPages loding = new LodPages();
     MainPageController controller = new MainPageController();
+   
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -57,7 +56,7 @@ public class LoginPageController implements Initializable {
             try {
                 ResultSet rs = DatabaseAccess.select("users", "USERNAME ='" + userName.getText() + "' AND PASSWORD = '" + password.getText() + "'");
                 if (rs.next()) {
-                    lodMainPage(rs.getString("NAME"));
+                    lodMainPage(rs.getString("NAME"), rs.getString("USERID"));
                     close();
                 } else {
                     ShowMessage showMessage = new ShowMessage();
@@ -69,43 +68,59 @@ public class LoginPageController implements Initializable {
         }
     }
 
-    public void lodMainPage(String userName) throws IOException {
+    public void lodMainPage(String userName, String userid) throws IOException {
         Stage stage = new Stage();
         Pane myPane = null;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/MainPage.fxml"));
         myPane = loader.load();
 
         controller = (MainPageController) loader.getController();
-        controller.setUserName(userName);
+        controller.setUserName(userName, userid);
         Scene scene = new Scene(myPane);
+        Screen screen = Screen.getPrimary();
+        Rectangle2D bounds = screen.getVisualBounds();
+        stage.setX(bounds.getMinX());
+        stage.setY(bounds.getMinY());
+        stage.setWidth(bounds.getWidth());
+        stage.setHeight(bounds.getHeight());
 
-        Duration delay = Duration.seconds(600);
+        Duration delay = Duration.seconds(200);
         PauseTransition transition = new PauseTransition(delay);
         transition.setOnFinished(evt -> {
             try {
-                controller.close();
-                lodLogingPage();
-                transition.stop();
+                if (controller.logOut) {
+                    transition.stop();
+                } else {
+                    controller.close();
+                    lodLogingPage();
+                    transition.stop();
+                }
             } catch (IOException ex) {
                 Logger.getLogger(Halagat.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
         scene.addEventFilter(InputEvent.ANY, evt -> transition.playFromStart());
-//        stage.setFullScreen(true);
         stage.setScene(scene);
-//        stage.getIcons().add(new Image("/source/osslogo.png"));
-//        stage.setTitle("الصفحة الرئيسية");
+        stage.getIcons().add(new Image("/Images/iconImage.png"));
+        stage.setTitle("الصفحة الرئيسية");
         stage.show();
     }
-
+    
     public void lodLogingPage() throws IOException {
         Stage stage = new Stage();
         Pane myPane = null;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/LoginPage.fxml"));
         myPane = loader.load();
         Scene scene = new Scene(myPane);
-//        stage.setFullScreen(true);
+        Screen screen = Screen.getPrimary();
+        Rectangle2D bounds = screen.getVisualBounds();
+        stage.setX(bounds.getMinX());
+        stage.setY(bounds.getMinY());
+        stage.setWidth(bounds.getWidth());
+        stage.setHeight(bounds.getHeight());
         stage.setScene(scene);
+        stage.getIcons().add(new Image("/Images/iconImage.png"));
+        stage.setTitle("تسجيل الدخول");
         stage.show();
     }
 
@@ -113,4 +128,14 @@ public class LoginPageController implements Initializable {
         Stage stage = (Stage) content.getScene().getWindow();
         stage.close();
     }
+
+    @FXML
+    private void changePassword(ActionEvent event) {
+        try {
+            loding.lodNewFXML("/Views/Users/ChangePassowrd");
+        } catch (IOException ex) {
+            Logger.getLogger(LoginPageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }

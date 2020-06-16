@@ -10,7 +10,7 @@
 }
 .massageText{
     -fx-font-family: "URW DIN Arabic";
-    -fx-font-size: 15px;
+    -fx-font-size: 10px;
     -fx-text-fill: #282727;
     -fx-border-color: #272626;
     -fx-border-insets: 0;

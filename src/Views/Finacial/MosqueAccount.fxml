@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
@@ -12,16 +13,16 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1200.0" stylesheets="@../../Css/pagStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlleres.LoanController">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1200.0" stylesheets="@../../Css/pagStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlleres.MosqueAccountController">
    <children>
-      <HBox layoutX="20.0" layoutY="20.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="61.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox layoutX="40.0" layoutY="40.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="61.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox prefHeight="200.0" prefWidth="500.0">
                <children>
                   <HBox prefHeight="40.0" prefWidth="550.0">
                      <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="التاريخ :" />
-                        <JFXDatePicker fx:id="loansdate" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="250.0" styleClass="date" HBox.hgrow="ALWAYS" />
+                        <JFXDatePicker fx:id="oprationdate" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="150.0" styleClass="date" HBox.hgrow="ALWAYS" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="5.0" />
@@ -29,8 +30,8 @@
                   </HBox>
                   <HBox layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="550.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="العهدة :" />
-                        <TextField fx:id="loansamount" alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="250.0" styleClass="textStyle" HBox.hgrow="ALWAYS" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="نوع العملية :" />
+                        <ComboBox fx:id="oprationtype" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="150.0" styleClass="textStyle" HBox.hgrow="ALWAYS" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="5.0" />
@@ -38,8 +39,17 @@
                   </HBox>
                   <HBox layoutX="10.0" layoutY="55.0" prefHeight="40.0" prefWidth="550.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="البيان :" />
-                        <TextField fx:id="details" alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="250.0" styleClass="textStyle" HBox.hgrow="ALWAYS" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="المبلغ :" />
+                        <TextField fx:id="amount" alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="250.0" styleClass="textStyle" HBox.hgrow="ALWAYS" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="100.0" prefHeight="40.0" prefWidth="550.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="المودع :" />
+                        <TextField fx:id="depositorname" alignment="CENTER" layoutX="38.0" layoutY="10.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="250.0" styleClass="textStyle" HBox.hgrow="ALWAYS" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="5.0" />
@@ -48,7 +58,7 @@
                   <HBox layoutX="10.0" layoutY="190.0" prefHeight="40.0" prefWidth="550.0">
                      <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="125.0" styleClass="labelText" stylesheets="@../../Css/pagStyle.css" text="ملاحظات :" />
-                        <TextField fx:id="notes_" alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="250.0" styleClass="textStyle" HBox.hgrow="ALWAYS" />
+                        <TextField fx:id="notes" alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="250.0" styleClass="textStyle" HBox.hgrow="ALWAYS" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="5.0" />
@@ -81,35 +91,25 @@
                         <Insets />
                      </VBox.margin>
                   </HBox>
-                  <HBox layoutX="10.0" layoutY="190.0" prefHeight="40.0" prefWidth="550.0">
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="295.0" prefHeight="175.0" prefWidth="500.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <TextField fx:id="paymentamount" alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="209.0" promptText="مباغ السداد" HBox.hgrow="ALWAYS" />
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#payment" prefHeight="40.0" prefWidth="125.0" styleClass="pageButtonStyle" stylesheets="@../../Css/pagStyle.css" text="تسديد">
-                           <HBox.margin>
-                              <Insets right="2.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="175.0" prefWidth="500.0" VBox.vgrow="ALWAYS">
-                     <children>
-                        <VBox alignment="CENTER" prefHeight="450.0" prefWidth="300.0" HBox.hgrow="ALWAYS">
+                        <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="450.0" prefWidth="300.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label alignment="CENTER" prefHeight="53.0" prefWidth="300.0" styleClass="balanceLable" stylesheets="@../../Css/financial.css" text="اجمالي العهدة" VBox.vgrow="ALWAYS" />
-                              <Label fx:id="totalOfloans" alignment="CENTER" prefHeight="200.0" prefWidth="300.0" styleClass="loanBalance" stylesheets="@../../Css/financial.css" text="0" VBox.vgrow="ALWAYS">
+                              <Label alignment="CENTER" prefHeight="53.0" prefWidth="300.0" styleClass="balanceLable" stylesheets="@../../Css/financial.css" text="اجمالي الايداع" VBox.vgrow="ALWAYS" />
+                              <Label fx:id="totalpaymanet" alignment="CENTER" prefHeight="200.0" prefWidth="300.0" styleClass="loanBalance" stylesheets="@../../Css/financial.css" text="1500" VBox.vgrow="ALWAYS">
                                  <VBox.margin>
                                     <Insets top="5.0" />
                                  </VBox.margin>
                               </Label>
                            </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
                         </VBox>
-                        <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="450.0" prefWidth="300.0" HBox.hgrow="ALWAYS">
+                        <VBox alignment="CENTER" prefHeight="450.0" prefWidth="300.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label alignment="CENTER" prefHeight="53.0" prefWidth="300.0" styleClass="balanceLable" stylesheets="@../../Css/financial.css" text="اجمالي المبلغ المسدد" VBox.vgrow="ALWAYS" />
-                              <Label fx:id="totalOfPaymentAmount" alignment="CENTER" prefHeight="200.0" prefWidth="300.0" styleClass="loanBalance" stylesheets="@../../Css/financial.css" text="0" VBox.vgrow="ALWAYS">
+                              <Label alignment="CENTER" prefHeight="53.0" prefWidth="300.0" styleClass="balanceLable" stylesheets="@../../Css/financial.css" text="اجمالي الصرف" VBox.vgrow="ALWAYS" />
+                              <Label fx:id="totalcost" alignment="CENTER" prefHeight="200.0" prefWidth="300.0" styleClass="loanBalance" stylesheets="@../../Css/financial.css" text="2540" VBox.vgrow="ALWAYS">
                                  <VBox.margin>
                                     <Insets top="5.0" />
                                  </VBox.margin>
@@ -121,8 +121,8 @@
                         </VBox>
                         <VBox alignment="CENTER" layoutX="268.0" layoutY="10.0" prefHeight="450.0" prefWidth="300.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="53.0" prefWidth="300.0" styleClass="balanceLable" stylesheets="@../../Css/financial.css" text="اجمالي المبلغ المتبقي" VBox.vgrow="ALWAYS" />
-                              <Label fx:id="totalOfremainingAmount" alignment="CENTER" prefHeight="200.0" prefWidth="300.0" styleClass="loanBalance" stylesheets="@../../Css/financial.css" text="0" VBox.vgrow="ALWAYS">
+                              <Label alignment="CENTER" prefHeight="53.0" prefWidth="300.0" styleClass="balanceLable" stylesheets="@../../Css/financial.css" text="الرصيد الحالي" VBox.vgrow="ALWAYS" />
+                              <Label fx:id="totalbalance" alignment="CENTER" prefHeight="200.0" prefWidth="300.0" styleClass="loanBalance" stylesheets="@../../Css/financial.css" text="540" VBox.vgrow="ALWAYS">
                                  <VBox.margin>
                                     <Insets top="5.0" />
                                  </VBox.margin>
@@ -139,17 +139,16 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin>
             </VBox>
-            <TableView fx:id="loansTabel" prefHeight="200.0" prefWidth="200.0" styleClass="tableStyle" stylesheets="@../../Css/pagStyle.css" HBox.hgrow="ALWAYS">
+            <TableView fx:id="mosqueaccountTable" prefHeight="200.0" prefWidth="200.0" styleClass="tableStyle" stylesheets="@../../Css/pagStyle.css" HBox.hgrow="ALWAYS">
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
                <columns>
-                  <TableColumn fx:id="loansid_col" prefWidth="40.0" text="رقم العهدة" />
-                  <TableColumn fx:id="loansdate_col" prefWidth="75.0" text="التاريخ" />
-                  <TableColumn fx:id="loansamount_col" prefWidth="75.0" text="العهدة" />
-                  <TableColumn fx:id="details_col" minWidth="150.0" prefWidth="75.0" text="البيان" />
-                  <TableColumn fx:id="paymentamount_col" prefWidth="75.0" text="التسديد" />
-                  <TableColumn fx:id="remainingamount_col" prefWidth="75.0" text="المتبقي" />
+                  <TableColumn fx:id="oprationid_col" prefWidth="40.0" text="رقم العملية" />
+                  <TableColumn fx:id="oprationdate_col" prefWidth="75.0" text="التاريخ" />
+                  <TableColumn fx:id="oprationtype_col" prefWidth="75.0" text="نوع العملية" />
+                  <TableColumn fx:id="amount_col" prefWidth="75.0" text="المبلغ" />
+                  <TableColumn fx:id="depositorname_col" minWidth="150.0" prefWidth="75.0" text="المودع" />
                   <TableColumn fx:id="notes_col" minWidth="150.0" prefWidth="75.0" text="ملاحظات" />
                </columns>
             </TableView>

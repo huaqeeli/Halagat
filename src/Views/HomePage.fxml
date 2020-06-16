@@ -28,7 +28,7 @@
                         <String fx:value="buttonStyle" />
                      </styleClass>
                   </Button>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#usersPageOpen" prefHeight="190.0" prefWidth="250.0" styleClass="buttonStyle" stylesheets="@../Css/home.css" text="المستخدمين">
+                  <Button contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#usersPageOpen" prefHeight="190.0" prefWidth="250.0" styleClass="buttonStyle" stylesheets="@../Css/home.css" text="المستخدمين">
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin>
@@ -40,7 +40,19 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#teachersLoginPageOpen" prefHeight="190.0" prefWidth="250.0" styleClass="buttonStyle" stylesheets="@../Css/home.css" text="الشؤون التعليمية">
+                  <Button contentDisplay="TOP" layoutX="103.0" layoutY="315.0" mnemonicParsing="false" prefHeight="190.0" prefWidth="250.0" styleClass="buttonStyle" stylesheets="@../Css/home.css" text="الاختبارات">
+                     <graphic>
+                        <ImageView fitHeight="118.0" fitWidth="136.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Images/test-128.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#teachersLoginPageOpen" prefHeight="190.0" prefWidth="250.0" styleClass="buttonStyle" stylesheets="@../Css/home.css" text="الشؤون التعليمية">
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin>
@@ -52,7 +64,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#FinancialPageOpen" prefHeight="190.0" prefWidth="250.0" styleClass="buttonStyle" stylesheets="@../Css/home.css" text="الشؤون الادارية والمالية">
+                  <Button contentDisplay="TOP" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#FinancialPageOpen" prefHeight="190.0" prefWidth="250.0" styleClass="buttonStyle" stylesheets="@../Css/home.css" text="الشؤون الادارية والمالية">
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin>
@@ -64,7 +76,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#admissionPageOpen" prefHeight="190.0" prefWidth="250.0" styleClass="buttonStyle" stylesheets="@../Css/home.css" text="القبول والتسجيل">
+                  <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onMouseClicked="#admissionPageOpen" prefHeight="190.0" prefWidth="250.0" styleClass="buttonStyle" stylesheets="@../Css/home.css" text="القبول والتسجيل">
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin>
